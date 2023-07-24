@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    [SerializeField]    public PlayerStateMachine stateMachine;
     public float speed = 2.0f;        // 이동 속도
     public Vector3 targetPosition;    // 이동 목표 지점
     public bool isMoving;             // 이동 중인지 여부
@@ -35,8 +36,8 @@ public class Player : Entity
                 {
                     // 타일 정보 가져오기
                     Vector3 objectPosition = hit.collider.transform.position;
-                    int columnIndex = (int)(objectPosition.x + 0.5f);
-                    int rowIndex = (int)(objectPosition.z + 0.5f);
+                    int columnIndex = (int)(objectPosition.x);
+                    int rowIndex = (int)(objectPosition.z);
 
                     // 타일 정보 출력
                     Debug.Log($"Clicked Tile: Column Index: {columnIndex}, Row Index: {rowIndex}");
