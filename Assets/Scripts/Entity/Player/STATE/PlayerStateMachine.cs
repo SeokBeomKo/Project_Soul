@@ -6,11 +6,12 @@ public class PlayerStateMachine : MonoBehaviour
 {
     public Player player;
     public IPlayerState curState;
-    public Dictionary<PlayerStateType, IPlayerState> stateDic = new Dictionary<PlayerStateType, IPlayerState>();
+    public Dictionary<PlayerStateType, IPlayerState> stateDic;
 
     private void Awake()
     {
-        
+        stateDic = new Dictionary<PlayerStateType, IPlayerState>();
+
         stateDic.Add(PlayerStateType.Idle,         new PlayerIdleState()            );  // 플레이어가 상대 턴 종료를 대기 중인 상태
         stateDic.Add(PlayerStateType.Preparing,    new PlayerPreparingState()       );  // 플레이어 턴 시작 대기 상태
         stateDic.Add(PlayerStateType.Selecting,    new PlayerSelectingState()       );  // 플레이어 선택 후 행동 결정 대기 상태

@@ -12,7 +12,7 @@ public class PlayerAttackingState : IPlayerState
     }
     public void Excute()
     {
-
+        player.soul.Attacking();
     }
 
     public void OnStateEnter()

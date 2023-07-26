@@ -10,7 +10,7 @@ public class TileMap : MonoBehaviour
     void Start()
     {
         AssignTilesToTileList();
-        GameManager.Instance.Player.tiles = tileList;
+        GameManager.Instance.player.tiles = tileList;
     }
 
     void AssignTilesToTileList()

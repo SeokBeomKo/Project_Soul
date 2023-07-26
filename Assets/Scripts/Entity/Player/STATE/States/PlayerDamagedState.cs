@@ -12,7 +12,7 @@ public class PlayerDamagedState : IPlayerState
     }
     public void Excute()
     {
-
+        player.Damaged();
     }
 
     public void OnStateEnter()

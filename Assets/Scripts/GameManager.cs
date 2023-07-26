@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private Player player;
-    public Player Player { get => player; } 
+    [SerializeField] private Player Player;
+    public Player player { get => Player; } 
 }

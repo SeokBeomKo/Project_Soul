@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HalberdSoul : MonoBehaviour
+public class HalberdSoul : PlayerSoulBase
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Selecting()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    }
+    public override void PickingAttack()
+    {
+
+    }
+    public override void Attacking()
+    {
+
+    }
+    public override void PickingMove()
     {
         
     }

@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreateSwordSoul : MonoBehaviour
+public class GreateSwordSoul : PlayerSoulBase
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Selecting()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    }
+    public override void PickingAttack()
+    {
+
+    }
+    public override void Attacking()
+    {
+
+    }
+    public override void PickingMove()
     {
         
     }
