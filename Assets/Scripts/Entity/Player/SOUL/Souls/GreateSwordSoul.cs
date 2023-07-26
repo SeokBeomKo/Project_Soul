@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreateSwordSoul : PlayerSoulBase
+public class GreateSwordSoul : PlayerSoul
 {
     public override void Selecting()
     {

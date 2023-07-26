@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerSoulFactory : MonoBehaviour
 {
     public Player player;
-    private Dictionary<PlayerSoulType, IPlayerSoul> soulDic;
+    private Dictionary<PlayerSoulType, PlayerSoul> soulDic;
 
     private void Awake()
     {
-        soulDic = new Dictionary<PlayerSoulType, IPlayerSoul>();
+        soulDic = new Dictionary<PlayerSoulType, PlayerSoul>();
 
         // 게임의 직업을 사전에 생성하고 Dictionary에 추가합니다.
         soulDic.Add(PlayerSoulType.NONE,          new NoneSoul());
@@ -30,9 +30,9 @@ public class PlayerSoulFactory : MonoBehaviour
         }
     }
 
-    public IPlayerSoul GetSoul(PlayerSoulType soulType)
+    public PlayerSoul GetSoul(PlayerSoulType soulType)
     {
-        soulDic.TryGetValue(soulType, out IPlayerSoul instance);
+        soulDic.TryGetValue(soulType, out PlayerSoul instance);
         return instance;
     }
 }

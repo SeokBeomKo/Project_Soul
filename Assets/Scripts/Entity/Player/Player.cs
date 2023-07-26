@@ -6,7 +6,7 @@ public class Player : Entity
 {
     [SerializeField]    public PlayerStateMachine   stateMachine;
     [SerializeField]    public PlayerSoulFactory    soulFactory;
-    [SerializeField]    public IPlayerSoul          soul;
+    [SerializeField]    public PlayerSoul           soul;
 
     [SerializeField]    public Animator             playerAnimator;
     

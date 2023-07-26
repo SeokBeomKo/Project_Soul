@@ -16,7 +16,7 @@ public interface IPlayerSoul
     void Dead();
 }
 
-abstract public class PlayerSoulBase : IPlayerSoul
+abstract public class PlayerSoul : IPlayerSoul
 {
     public Player player {get; set;}
 
