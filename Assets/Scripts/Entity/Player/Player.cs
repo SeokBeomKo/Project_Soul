@@ -10,14 +10,11 @@ public class Player : Entity
     public bool isMoving;             // 이동 중인지 여부
 
     public Tile[,] tiles;             // 타일 맵을 저장하는 2차원 배열
-    public TileMap map;
+
     private void Start()
     {
         targetPosition = transform.position;
         isMoving = false;
-
-        // 여기에 타일 맵 로드와 초기화 코드를 작성하세요.
-        tiles = map.tileList;
     }
 
     private void Update()
