@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface PlayerState
 {
-    public Player enemy {get; set;}
+    public Player player {get; set;}
     public PlayerStateMachine stateMachine {get; set;}
     public void Init(PlayerStateMachine stateMachine);
     public void Excute();

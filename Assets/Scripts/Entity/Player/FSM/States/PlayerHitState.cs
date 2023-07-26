@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSelectAttackState : PlayerState
+public class PlayerHitState : PlayerState
 {
     public Player player {get; set;}
     public PlayerStateMachine stateMachine {get; set;}
