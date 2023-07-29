@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 인터페이스 내의 기본 속성은 public
 public interface IPlayerState
 {
-    public Player player {get; set;}
-    public PlayerStateMachine stateMachine {get; set;}
-    public void Init(PlayerStateMachine stateMachine);
-    public void Excute();
+    Player player {get; set;}
+    PlayerStateMachine stateMachine {get; set;}
+    void Init(PlayerStateMachine stateMachine);
+    void Execute();
 
-    public void OnStateEnter();
-    public void OnStateExit();
+    void OnStateEnter();
+    void OnStateExit();
 }

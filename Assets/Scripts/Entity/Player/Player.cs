@@ -36,7 +36,7 @@ public class Player : Entity
     {
         if (null != stateMachine.curState)
         {
-            stateMachine.curState.Excute();
+            stateMachine.curState.Execute();
         }
     }
 

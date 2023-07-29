@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 플레이어의 기본 대기 상태
+// 조건 1. 플레이어가 이동 가능한 타일을 선택한 경우 -> PlayerMovingState
+// 조건 2. 플레이어가 
 public class PlayerIdleState : IPlayerState
 {
     public Player player {get; set;}
     public PlayerStateMachine stateMachine {get; set;}
-    public void Init(PlayerStateMachine stateMachine)
+    public void Init(PlayerStateMachine _stateMachine)
     {
-
+        stateMachine = _stateMachine;
+        player = stateMachine.player;
     }
-    public void Excute()
+
+    public void Execute()
     {
-        stateMachine.ChangeState(PlayerStateType.Preparing);
+        player.soul.Idle();
     }
 
     public void OnStateEnter()

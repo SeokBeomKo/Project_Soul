@@ -24,7 +24,7 @@ public class PlayerSoulFactory : MonoBehaviour
         soulDic.Add(PlayerSoulType.GUN,           new GunSoul());
         soulDic.Add(PlayerSoulType.KATANA,        new KatanaSoul());
 
-        foreach(IPlayerState Value in soulDic.Values)
+        foreach(PlayerSoul Value in soulDic.Values)
         {
             Value.player = player;
         }

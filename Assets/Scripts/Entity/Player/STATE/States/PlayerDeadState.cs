@@ -6,13 +6,14 @@ public class PlayerDeadState : IPlayerState
 {
     public Player player {get; set;}
     public PlayerStateMachine stateMachine {get; set;}
-    public void Init(PlayerStateMachine stateMachine)
+    public void Init(PlayerStateMachine _stateMachine)
     {
-
+        stateMachine = _stateMachine;
+        player = stateMachine.player;
     }
-    public void Excute()
+    public void Execute()
     {
-
+        player.soul.Dead();
     }
 
     public void OnStateEnter()

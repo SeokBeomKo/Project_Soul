@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class SwordSoul : PlayerSoul
 {
-    public override void Selecting()
+    public override void Melee()
     {
 
     }
-    public override void PickingAttack()
-    {
 
-    }
-    public override void Attacking()
-    {
-
-    }
-    public override void PickingMove()
+    public override void Skill()
     {
         
     }
