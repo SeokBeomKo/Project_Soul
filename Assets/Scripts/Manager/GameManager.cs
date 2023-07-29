@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Tile;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -10,9 +11,21 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] public CinemachineBrain cinemachineBrain;
 
+    [SerializeField] public Dictionary<Vector3Int, TileNode> nodeMap;
+
     private void Awake() 
     {
-        
+        nodeMap = new Dictionary<Vector3Int, TileNode>();
+    }
+
+    public void InitPath()
+    {
+        foreach (KeyValuePair<Vector3Int, TileNode> entry in nodeMap)
+        {
+            entry.Value.G = int.MaxValue;
+            entry.Value.H = int.MaxValue;
+            entry.Value.Parent = null;
+        }
     }
 
     public Camera GetActiveVirtualCamera()
