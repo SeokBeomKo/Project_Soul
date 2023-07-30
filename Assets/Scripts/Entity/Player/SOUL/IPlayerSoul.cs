@@ -41,7 +41,7 @@ abstract public class PlayerSoul : IPlayerSoul
                         // 타일 정보 출력
                         Debug.Log($"Clicked Tile: Column Index: {targetTile.Position.x}, Row Index: {targetTile.Position.y}");
 
-                        player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector3Int.FloorToInt(player.transform.position), targetTile.Position);
+                        player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector3Int.FloorToInt(player.transform.parent.position), targetTile.Position);
                         GameManager.Instance.InitPath();
                         player.stateMachine.ChangeState(PlayerStateType.Moving);
                     }
@@ -56,7 +56,7 @@ abstract public class PlayerSoul : IPlayerSoul
          if (player.pathTiles != null && player.pathTiles.Count > 0 && currentPathIndex < player.pathTiles.Count)
         {
             Vector3 targetPosition = new Vector3(player.pathTiles[currentPathIndex].Position.x, player.transform.position.y, player.pathTiles[currentPathIndex].Position.z);
-
+            player.transform.parent.LookAt(targetPosition);
             if (Vector3.Distance(player.transform.position, targetPosition) > Mathf.Epsilon)
             {
                 player.transform.parent.position = Vector3.MoveTowards(player.transform.position, targetPosition, player.moveSpeed * Time.deltaTime);

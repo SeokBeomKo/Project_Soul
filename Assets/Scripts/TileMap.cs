@@ -20,6 +20,6 @@ public class TileMap : MonoBehaviour
             }
         }
 
-        GameManager.Instance.nodeMap[new Vector3Int(2, 0, 2)].isWalkable = false; // 예시로 (2,2) 위치에 벽 추가
+        GameManager.Instance.nodeMap[new Vector3Int(6, 0, 2)].isWalkable = false; // 예시로 (2,2) 위치에 벽 추가
     }
 }

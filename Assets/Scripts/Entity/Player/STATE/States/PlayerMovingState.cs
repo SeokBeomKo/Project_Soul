@@ -18,10 +18,9 @@ public class PlayerMovingState : IPlayerState
 
     public void OnStateEnter()
     {
-
+        player.ChangeAnimation(PlayerStateType.Moving.ToString());
     }
     public void OnStateExit()
     {
-
     }
 }

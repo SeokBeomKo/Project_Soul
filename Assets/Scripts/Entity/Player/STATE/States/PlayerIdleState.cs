@@ -23,6 +23,7 @@ public class PlayerIdleState : IPlayerState
     public void OnStateEnter()
     {
         Debug.Log("Player State : (Enter)Player Idle State");
+        player.ChangeAnimation(PlayerStateType.Idle.ToString());
     }
     public void OnStateExit()
     {

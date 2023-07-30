@@ -13,7 +13,7 @@ public class AStarAlgorithm
 
     private static int Heuristic(Vector3Int a, Vector3Int b)
     {
-        return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
+        return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.z - b.z);
     }
 
     private static IEnumerable<Vector3Int> GetNeighbors(Vector3Int currentNode, Dictionary<Vector3Int, TileNode> nodeMap)

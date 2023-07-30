@@ -10,8 +10,7 @@ public class Player : Entity
     [SerializeField]    public PlayerSoul           soul;
 
     [SerializeField]    public Animator             playerAnimator;
-
-    public TileNode[,] tiles;             // 타일 맵을 저장하는 2차원 배열
+    [SerializeField]    public string               curAnimation;
 
     private void Awake()
     {
@@ -21,6 +20,15 @@ public class Player : Entity
     private void Start() 
     {
         ChangeSoul(PlayerSoulType.NONE);
+    }
+
+    public void ChangeAnimation(string newAnimation)
+    {
+        if(curAnimation == newAnimation)    return;
+
+        playerAnimator.Play(newAnimation);
+
+        curAnimation = newAnimation;
     }
 
     public void ChangeSoul(PlayerSoulType soulType)
