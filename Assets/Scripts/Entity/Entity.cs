@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Tile;
 
 abstract public class Entity : MonoBehaviour, IDamageable
 {
+    [SerializeField] public Vector3Int curTilePosition;     // 현재 타일 위치(키 값)
+    [SerializeField] public Vector3Int startPoint;          // 길 찾기 시작점
+    [SerializeField] public Vector3Int endPoint;            // 길 찾기 목표지점
+    [SerializeField] public List<Vector3Int> pathTiles;       // 길 찾기 경로 정보
+
     [SerializeField] public float moveSpeed = 2f;       // 객체의 이동 속도
     [SerializeField] public Vector3 targetPosition;     // 객체의 이동 목표 지점
-    [SerializeField] public Tile curTile;               // 현재 타일의 정보
 
     public abstract IEnumerator Damaged();
 }

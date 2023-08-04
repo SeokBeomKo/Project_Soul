@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BowSoul : PlayerSoul
 {
-    public override void Melee()
+    public override void Attack()
     {
 
     }

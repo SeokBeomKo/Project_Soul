@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Tile;
 
 public class Player : Entity
 {
@@ -9,16 +10,16 @@ public class Player : Entity
     [SerializeField]    public PlayerSoul           soul;
 
     [SerializeField]    public Animator             playerAnimator;
-    
-    // TODO : 삭제
-    public bool isMoving;             // 이동 중인지 여부
+    [SerializeField]    public string               curAnimation;
 
-    public Tile[,] tiles;             // 타일 맵을 저장하는 2차원 배열
+    // TODO : 플레이어 정보 데이터화
+
+    [SerializeField]    public int                  attackRange;
+    [SerializeField]    public GameObject           attackTarget;
 
     private void Awake()
     {
         targetPosition = transform.parent.position;
-        isMoving = false;
     }
 
     private void Start() 
@@ -26,9 +27,18 @@ public class Player : Entity
         ChangeSoul(PlayerSoulType.NONE);
     }
 
+    public void ChangeAnimation(string newAnimation)
+    {
+        if(curAnimation == newAnimation)    return;
+
+        playerAnimator.Play(newAnimation);
+
+        curAnimation = newAnimation;
+    }
+
     public void ChangeSoul(PlayerSoulType soulType)
     {
-        // TODO : 무기,의상 모델 과 애니메이터 변경
+        // TODO : 무기,의상 모델, 애니메이터, VFX 변경
         soul = soulFactory.GetSoul(soulType);
     }
 
