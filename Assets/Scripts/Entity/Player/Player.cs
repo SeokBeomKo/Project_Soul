@@ -12,7 +12,10 @@ public class Player : Entity
     [SerializeField]    public Animator             playerAnimator;
     [SerializeField]    public string               curAnimation;
 
-    [SerializeField]    public GameObject           game;
+    // TODO : 플레이어 정보 데이터화
+
+    [SerializeField]    public int                  attackRange;
+    [SerializeField]    public GameObject           attackTarget;
 
     private void Awake()
     {
@@ -35,7 +38,7 @@ public class Player : Entity
 
     public void ChangeSoul(PlayerSoulType soulType)
     {
-        // TODO : 무기,의상 모델 과 애니메이터 변경
+        // TODO : 무기,의상 모델, 애니메이터, VFX 변경
         soul = soulFactory.GetSoul(soulType);
     }
 

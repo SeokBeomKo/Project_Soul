@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KatanaSoul : PlayerSoul
 {
-    public override void Melee()
+    public override void Attack()
     {
 
     }

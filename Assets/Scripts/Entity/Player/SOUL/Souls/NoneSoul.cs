@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NoneSoul : PlayerSoul
 {
-    public override void Melee()
+    public override void Attack()
     {
 
     }

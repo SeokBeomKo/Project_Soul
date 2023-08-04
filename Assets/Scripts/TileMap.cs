@@ -7,7 +7,7 @@ public class TileMap : MonoBehaviour
 {
     Vector3Int gridSize = new Vector3Int(10, 0, 10); // 격자 크기 정의
 
-    void Start()
+    void Awake()
     {
         for (int x = 0; x < gridSize.x; ++x)
         {

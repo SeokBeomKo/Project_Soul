@@ -9,7 +9,7 @@ public interface IPlayerSoul
 
     void Idle();
     void Moving();
-    void Melee();
+    void Attack();
     void Skill();
     void Dead();
 }
@@ -18,7 +18,7 @@ abstract public class PlayerSoul : IPlayerSoul
 {
     public Player player {get; set;}
 
-    abstract public void Melee();
+    abstract public void Attack();
     abstract public void Skill();
 
     public void Idle()
@@ -33,7 +33,7 @@ abstract public class PlayerSoul : IPlayerSoul
                 // 타일 오브젝트를 감지했을 경우 처리
                 if (hit.collider.CompareTag("Tile"))
                 {
-                    Debug.Log("클릭");
+                    Debug.Log("타일 클릭");
                     Debug.Log(Vector3Int.FloorToInt(hit.collider.GetComponent<Transform>().position));
                     TileNode targetTile = GameManager.Instance.nodeMap[Vector3Int.FloorToInt(hit.collider.GetComponent<Transform>().position)];
                     if (targetTile.isWalkable)
@@ -44,6 +44,24 @@ abstract public class PlayerSoul : IPlayerSoul
                         player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector3Int.FloorToInt(player.transform.parent.position), targetTile.Position);
                         GameManager.Instance.InitPath();
                         player.stateMachine.ChangeState(PlayerStateType.Moving);
+                    }
+                }
+                // 적 오브젝트를 감지했을 경우 처리
+                else if (hit.collider.CompareTag("Enemy"))
+                {
+                    Debug.Log("적 클릭");
+                    GameObject enemy = hit.collider.gameObject;
+                    Vector3Int enemyPosition = Vector3Int.FloorToInt(enemy.transform.parent.position);
+                    Vector3Int playerPosition = Vector3Int.FloorToInt(player.transform.parent.position);
+
+                    Vector3Int? targetTile = AStarAlgorithm.FindNearWalkableTile(playerPosition, enemyPosition, player.attackRange);
+                    if (targetTile.HasValue)
+                    {
+                        Debug.Log($"Clicked Enemy: Column Index: {targetTile.Value.x}, Row Index: {targetTile.Value.y}");
+                        player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector3Int.FloorToInt(player.transform.parent.position), targetTile.Value);
+                        GameManager.Instance.InitPath();
+                        player.stateMachine.ChangeState(PlayerStateType.Moving);
+                        player.attackTarget = enemy;  // 플레이어의 공격 대상 설정
                     }
                 }
             }
@@ -66,12 +84,20 @@ abstract public class PlayerSoul : IPlayerSoul
                 player.transform.position = targetPosition;
                 currentPathIndex++;
 
-                // 이동이 끝났을 때의 추가 로직 (예를 들어 상태 변경 등)은 여기에 추가해주시면 됩니다.
                 if (currentPathIndex >= player.pathTiles.Count)
                 {
                     currentPathIndex = 0;
                     player.pathTiles = null;  // 경로가 끝났으면 참조 제거, 필요에 따라 유지할 수 있습니다.
-                    player.stateMachine.ChangeState(PlayerStateType.Idle);
+
+                    // 이동 후 공격 대상이 있다면 공격 상태로 전환
+                    if (player.attackTarget != null)
+                    {
+                        player.stateMachine.ChangeState(PlayerStateType.Attack);
+                    }
+                    else
+                    {
+                        player.stateMachine.ChangeState(PlayerStateType.Idle);
+                    }
                 }
             }
         }

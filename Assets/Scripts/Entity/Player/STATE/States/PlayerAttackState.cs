@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMeleeState : IPlayerState
+public class PlayerAttackState : IPlayerState
 {
     public Player player {get; set;}
     public PlayerStateMachine stateMachine {get; set;}
@@ -13,15 +13,15 @@ public class PlayerMeleeState : IPlayerState
     }
     public void Execute()
     {
-        player.soul.Melee();
+        player.soul.Attack();
     }
 
     public void OnStateEnter()
     {
-
+        Debug.Log("Player State : (Enter)Player Attack State");
     }
     public void OnStateExit()
     {
-
+        Debug.Log("Player State : (Exit)Player Attack State");
     }
 }

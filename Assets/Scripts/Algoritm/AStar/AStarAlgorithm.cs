@@ -28,6 +28,33 @@ public class AStarAlgorithm
         }
     }
 
+    public static Vector3Int? FindNearWalkableTile(Vector3Int playerPosition, Vector3Int targetPosition, int inRange)
+    {
+        // 플레이어와 적의 상대 위치에 따른 정렬 로직
+        List<Vector3Int> sortedDirections = new List<Vector3Int>(directions);
+        sortedDirections.Sort((dirA, dirB) =>
+        {
+            Vector3Int newPosA = targetPosition + dirA;
+            Vector3Int newPosB = targetPosition + dirB;
+            float distA = Vector3Int.Distance(playerPosition, newPosA);
+            float distB = Vector3Int.Distance(playerPosition, newPosB);
+            return distA.CompareTo(distB);
+        });
+        targetPosition.y = 0;
+        for (int i = 1; i <= inRange; i++)
+        {
+            foreach (Vector3Int direction in sortedDirections)
+            {
+                Vector3Int neighborPos = targetPosition + (direction * i);
+                if (GameManager.Instance.nodeMap.ContainsKey(neighborPos) && GameManager.Instance.nodeMap[neighborPos].isWalkable)
+                {
+                    return neighborPos;
+                }
+            }
+        }
+        return null;
+    }
+
     public static List<TileNode> FindPath(Dictionary<Vector3Int, TileNode> nodeMap, Vector3Int startNodePos, Vector3Int endNodePos)
     {
         TileNode startNode = nodeMap[startNodePos];

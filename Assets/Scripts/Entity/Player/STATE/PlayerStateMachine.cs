@@ -14,7 +14,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         stateDic.Add(PlayerStateType.Idle,         new PlayerIdleState()            );  // 플레이어가 상대 턴 종료를 대기 중인 상태
         stateDic.Add(PlayerStateType.Moving,       new PlayerMovingState()          );  // 플레이어 이동 중인 상태
-        stateDic.Add(PlayerStateType.Melee,        new PlayerMeleeState()           );  // 플레이어 공격 중인 상태
+        stateDic.Add(PlayerStateType.Attack,       new PlayerAttackState()          );  // 플레이어 공격 중인 상태
         stateDic.Add(PlayerStateType.Skill,        new PlayerSkillState()           );  // 플레이어 스킬 사용 상태
         stateDic.Add(PlayerStateType.Dead,         new PlayerDeadState()            );  // 플레이어 사망 상태
 
