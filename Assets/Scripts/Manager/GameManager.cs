@@ -28,6 +28,11 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public void SetWalkable(Vector3Int pos, bool isWalkable)
+    {
+        nodeMap[pos].isWalkable = isWalkable;
+    }
+
     public Camera GetActiveVirtualCamera()
     {  
         return cinemachineBrain.OutputCamera;

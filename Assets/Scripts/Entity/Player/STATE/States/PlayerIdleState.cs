@@ -24,9 +24,11 @@ public class PlayerIdleState : IPlayerState
     {
         Debug.Log("Player State : (Enter)Player Idle State");
         player.ChangeAnimation(PlayerStateType.Idle.ToString());
+        GameManager.Instance.SetWalkable(Vector3Int.FloorToInt(player.transform.parent.position), false);
     }
     public void OnStateExit()
     {
         Debug.Log("Player State : (Exit)Player Idle State");
+        GameManager.Instance.SetWalkable(Vector3Int.FloorToInt(player.transform.parent.position), true);
     }
 }

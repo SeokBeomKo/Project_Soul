@@ -12,6 +12,8 @@ public class Player : Entity
     [SerializeField]    public Animator             playerAnimator;
     [SerializeField]    public string               curAnimation;
 
+    [SerializeField]    public GameObject           game;
+
     private void Awake()
     {
         targetPosition = transform.parent.position;
