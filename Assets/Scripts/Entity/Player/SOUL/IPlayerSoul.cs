@@ -23,83 +23,101 @@ abstract public class PlayerSoul : IPlayerSoul
 
     public void Idle()
     {
-        if (Input.GetMouseButtonDown(0))
+        // 클릭 감지
+        if (!Input.GetMouseButtonDown(0))
         {
-            Ray ray = GameManager.Instance.GetActiveVirtualCamera().ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            return;
+        }
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                // 타일 오브젝트를 감지했을 경우 처리
-                if (hit.collider.CompareTag("Tile"))
-                {
-                    Debug.Log("타일 클릭");
-                    Debug.Log(Vector3Int.FloorToInt(hit.collider.GetComponent<Transform>().position));
-                    TileNode targetTile = GameManager.Instance.nodeMap[Vector3Int.FloorToInt(hit.collider.GetComponent<Transform>().position)];
-                    if (targetTile.isWalkable)
-                    {
-                        // 타일 정보 출력
-                        Debug.Log($"Clicked Tile: Column Index: {targetTile.Position.x}, Row Index: {targetTile.Position.y}");
+        Ray ray = GameManager.Instance.GetActiveVirtualCamera().ScreenPointToRay(Input.mousePosition);
+        if (!Physics.Raycast(ray, out RaycastHit hit))
+        {
+            return;
+        }
 
-                        player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector3Int.FloorToInt(player.transform.parent.position), targetTile.Position);
-                        GameManager.Instance.InitPath();
-                        player.stateMachine.ChangeState(PlayerStateType.Moving);
-                    }
-                }
-                // 적 오브젝트를 감지했을 경우 처리
-                else if (hit.collider.CompareTag("Enemy"))
-                {
-                    Debug.Log("적 클릭");
-                    GameObject enemy = hit.collider.gameObject;
-                    Vector3Int enemyPosition = Vector3Int.FloorToInt(enemy.transform.parent.position);
-                    Vector3Int playerPosition = Vector3Int.FloorToInt(player.transform.parent.position);
+        Vector3Int playerPosition = Vector3Int.FloorToInt(player.transform.parent.position);
+        Vector3Int clickedPosition = Vector3Int.FloorToInt(hit.collider.GetComponent<Transform>().parent.position);
 
-                    Vector3Int? targetTile = AStarAlgorithm.FindNearWalkableTile(playerPosition, enemyPosition, player.attackRange);
-                    if (targetTile.HasValue)
-                    {
-                        Debug.Log($"Clicked Enemy: Column Index: {targetTile.Value.x}, Row Index: {targetTile.Value.y}");
-                        player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector3Int.FloorToInt(player.transform.parent.position), targetTile.Value);
-                        GameManager.Instance.InitPath();
-                        player.stateMachine.ChangeState(PlayerStateType.Moving);
-                        player.attackTarget = enemy;  // 플레이어의 공격 대상 설정
-                    }
-                }
-            }
+        // 타일 오브젝트를 감지했을 경우 처리
+        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Tile"))
+        {
+            TileClick(playerPosition, clickedPosition);
+        }
+        // 적 오브젝트를 감지했을 경우 처리
+        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            player.attackTarget = hit.collider.gameObject;  // 플레이어의 공격 대상 설정
+            EnemyClick(playerPosition, clickedPosition);
         }
     }
+
+    private void EnemyClick(Vector3Int playerPosition, Vector3Int clickedPosition)
+    {
+        // 사거리 이내라면 공격
+        if (Vector3Int.Distance(playerPosition, clickedPosition) <= player.attackRange)
+        {
+            player.stateMachine.ChangeState(PlayerStateType.Attack);
+            return;
+        }
+
+        // 사거리 밖이라면 이동
+        Vector3Int? targetTile = AStarAlgorithm.FindNearWalkableTile(playerPosition, clickedPosition, player.attackRange);
+        if (!targetTile.HasValue)
+        {
+            return;
+        }
+
+        Debug.Log($"Clicked Enemy: Column Index: {targetTile.Value.x}, Row Index: {targetTile.Value.y}");
+        player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector3Int.FloorToInt(player.transform.parent.position), targetTile.Value);
+        GameManager.Instance.InitPath();
+        player.stateMachine.ChangeState(PlayerStateType.Moving);
+    }
+
+    private void TileClick(Vector3Int playerPosition, Vector3Int clickedPosition)
+    {
+        if (!GameManager.Instance.nodeMap[clickedPosition].isWalkable)
+            {
+                return;
+            }
+            // 타일 정보 출력
+            Debug.Log($"Clicked Tile: Column Index: {clickedPosition.x}, Row Index: {clickedPosition.z}");
+            player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, playerPosition, clickedPosition);
+            GameManager.Instance.InitPath();
+            player.stateMachine.ChangeState(PlayerStateType.Moving);
+            return;
+    }
+
     int currentPathIndex = 0;  // 경로 인덱스
     public void Moving()
     {
         Debug.Log("이동 중");
-         if (player.pathTiles != null && player.pathTiles.Count > 0 && currentPathIndex < player.pathTiles.Count)
+        if (player.pathTiles == null || player.pathTiles.Count == 0 || currentPathIndex >= player.pathTiles.Count)
         {
-            Vector3 targetPosition = new Vector3(player.pathTiles[currentPathIndex].Position.x, player.transform.position.y, player.pathTiles[currentPathIndex].Position.z);
+            return;
+        }
+        Vector3 targetPosition = new Vector3(player.pathTiles[currentPathIndex].x, 0, player.pathTiles[currentPathIndex].z);
+        if (Vector3.Distance(player.transform.parent.position, targetPosition) > Mathf.Epsilon)
+        {
             player.transform.parent.LookAt(targetPosition);
-            if (Vector3.Distance(player.transform.position, targetPosition) > Mathf.Epsilon)
-            {
-                player.transform.parent.position = Vector3.MoveTowards(player.transform.position, targetPosition, player.moveSpeed * Time.deltaTime);
-            }
-            else
-            {
-                player.transform.position = targetPosition;
-                currentPathIndex++;
+            player.transform.parent.position = Vector3.MoveTowards(player.transform.parent.position, targetPosition, player.moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            player.transform.position = targetPosition;
+            UpdatePathIndex();
+        }
+    }
 
-                if (currentPathIndex >= player.pathTiles.Count)
-                {
-                    currentPathIndex = 0;
-                    player.pathTiles = null;  // 경로가 끝났으면 참조 제거, 필요에 따라 유지할 수 있습니다.
-
-                    // 이동 후 공격 대상이 있다면 공격 상태로 전환
-                    if (player.attackTarget != null)
-                    {
-                        player.stateMachine.ChangeState(PlayerStateType.Attack);
-                    }
-                    else
-                    {
-                        player.stateMachine.ChangeState(PlayerStateType.Idle);
-                    }
-                }
-            }
+    private void UpdatePathIndex()
+    {
+        currentPathIndex++;
+        if (currentPathIndex >= player.pathTiles.Count)
+        {
+            currentPathIndex = 0;
+            player.pathTiles = null;  // 경로가 끝났으면 참조 제거, 필요에 따라 유지할 수 있습니다.
+            // 이동 후 공격 대상이 있다면 공격 상태로 전환
+            PlayerStateType nextState = player.attackTarget != null ? PlayerStateType.Attack : PlayerStateType.Idle;
+            player.stateMachine.ChangeState(nextState);
         }
     }
 
