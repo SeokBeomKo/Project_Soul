@@ -7,12 +7,12 @@ public class NoneSoul : PlayerSoul
     public override void Attack()
     {
         // 공격 불가
-        player.stateMachine.ChangeState(PlayerStateType.Idle);
+        //player.stateMachine.ChangeState(PlayerStateType.Idle);
     }
 
     public override void Skill()
     {
         // 공격 불가
-        player.stateMachine.ChangeState(PlayerStateType.Idle);
+        //player.stateMachine.ChangeState(PlayerStateType.Idle);
     }
 }

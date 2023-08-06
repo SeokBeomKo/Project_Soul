@@ -67,7 +67,7 @@ abstract public class PlayerSoul : IPlayerSoul
             return;
         }
 
-        Debug.Log($"Clicked Enemy: Column Index: {targetTile.Value.x}, Row Index: {targetTile.Value.y}");
+        //Debug.Log($"Clicked Enemy: Column Index: {targetTile.Value.x}, Row Index: {targetTile.Value.y}");
         player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector3Int.FloorToInt(player.transform.parent.position), targetTile.Value);
         GameManager.Instance.InitPath();
         player.stateMachine.ChangeState(PlayerStateType.Moving);
@@ -79,12 +79,12 @@ abstract public class PlayerSoul : IPlayerSoul
             {
                 return;
             }
-            // 타일 정보 출력
-            Debug.Log($"Clicked Tile: Column Index: {clickedPosition.x}, Row Index: {clickedPosition.z}");
-            player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, playerPosition, clickedPosition);
-            GameManager.Instance.InitPath();
-            player.stateMachine.ChangeState(PlayerStateType.Moving);
-            return;
+        // 타일 정보 출력
+        Debug.Log($"Clicked Tile: Column Index: {clickedPosition.x}, Row Index: {clickedPosition.z}");
+        player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, playerPosition, clickedPosition);
+        GameManager.Instance.InitPath();
+        player.stateMachine.ChangeState(PlayerStateType.Moving);
+        return;
     }
 
     int currentPathIndex = 0;  // 경로 인덱스

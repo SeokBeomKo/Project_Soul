@@ -17,6 +17,7 @@ public class Player : Entity
     [SerializeField]    public int                  attackRange;
     [SerializeField]    public GameObject           attackTarget;
 
+
     private void Awake()
     {
         targetPosition = transform.parent.position;

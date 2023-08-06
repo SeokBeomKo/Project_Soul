@@ -9,20 +9,21 @@ public class PlayerSoulFactory : MonoBehaviour
 
     private void Awake()
     {
-        soulDic = new Dictionary<PlayerSoulType, PlayerSoul>();
-
         // 게임의 직업을 사전에 생성하고 Dictionary에 추가합니다.
-        soulDic.Add(PlayerSoulType.NONE,          new NoneSoul());
-        soulDic.Add(PlayerSoulType.SWORD,         new SwordSoul());
-        soulDic.Add(PlayerSoulType.BLADE,         new BladeSoul());
-        soulDic.Add(PlayerSoulType.SPEAR,         new SpearSoul());
-        soulDic.Add(PlayerSoulType.BOW,           new BowSoul());
-        soulDic.Add(PlayerSoulType.DUAL,          new DualSoul());
-        soulDic.Add(PlayerSoulType.GREATESWORD,   new GreateSwordSoul());
-        soulDic.Add(PlayerSoulType.HALBERD,       new HalberdSoul());
-        soulDic.Add(PlayerSoulType.FIST,          new FistSoul());
-        soulDic.Add(PlayerSoulType.GUN,           new GunSoul());
-        soulDic.Add(PlayerSoulType.KATANA,        new KatanaSoul());
+        soulDic = new Dictionary<PlayerSoulType, PlayerSoul>
+        {
+            { PlayerSoulType.NONE,          new NoneSoul() },
+            { PlayerSoulType.SWORD,         new SwordSoul() },
+            { PlayerSoulType.BLADE,         new BladeSoul() },
+            { PlayerSoulType.SPEAR,         new SpearSoul() },
+            { PlayerSoulType.BOW,           new BowSoul() },
+            { PlayerSoulType.DUAL,          new DualSoul() },
+            { PlayerSoulType.GREATESWORD,   new GreateSwordSoul() },
+            { PlayerSoulType.HALBERD,       new HalberdSoul() },
+            { PlayerSoulType.FIST,          new FistSoul() },
+            { PlayerSoulType.GUN,           new GunSoul() },
+            { PlayerSoulType.KATANA,        new KatanaSoul() }
+        };
 
         foreach(PlayerSoul Value in soulDic.Values)
         {
