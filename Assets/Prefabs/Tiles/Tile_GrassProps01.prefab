@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7485273298560407079}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tile_GrassProps01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1187467018864070448}
   - component: {fileID: 5095760821657325265}
   - component: {fileID: 5067791249454065087}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7485273298560407079}
@@ -73,7 +73,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4523057635250364192}
-  m_Mesh: {fileID: 3852202848036260160, guid: c415e4324e2156149997873ade7227a1, type: 3}
+  m_Mesh: {fileID: -2269245349382216059, guid: e60f69879b8cfad42bea9deb1db3ca60, type: 3}
 --- !u!23 &5067791249454065087
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8911016042077748279}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,6 +166,10 @@ PrefabInstance:
     - target: {fileID: 3062078212299774367, guid: 087b3835c679f9e4da380fc2b5ec1163, type: 3}
       propertyPath: m_Name
       value: Shrub (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062078212299774367, guid: 087b3835c679f9e4da380fc2b5ec1163, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7898513136742634733, guid: 087b3835c679f9e4da380fc2b5ec1163, type: 3}
       propertyPath: m_LocalScale.x
@@ -245,13 +249,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassPatch
       objectReference: {fileID: 0}
+    - target: {fileID: 247075295260515064, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.417
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -306,6 +314,10 @@ PrefabInstance:
     - target: {fileID: 3062078212299774367, guid: 087b3835c679f9e4da380fc2b5ec1163, type: 3}
       propertyPath: m_Name
       value: Shrub (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062078212299774367, guid: 087b3835c679f9e4da380fc2b5ec1163, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7898513136742634733, guid: 087b3835c679f9e4da380fc2b5ec1163, type: 3}
       propertyPath: m_LocalScale.x
@@ -385,6 +397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shrub
       objectReference: {fileID: 0}
+    - target: {fileID: 3062078212299774367, guid: 087b3835c679f9e4da380fc2b5ec1163, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7898513136742634733, guid: 087b3835c679f9e4da380fc2b5ec1163, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
@@ -463,13 +479,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassPatch (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 247075295260515064, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.321
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -525,6 +545,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassPatch (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 247075295260515064, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalScale.x
       value: 35.27
@@ -543,7 +567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -602,6 +626,10 @@ PrefabInstance:
     - target: {fileID: 3062078212299774367, guid: 087b3835c679f9e4da380fc2b5ec1163, type: 3}
       propertyPath: m_Name
       value: Shrub (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062078212299774367, guid: 087b3835c679f9e4da380fc2b5ec1163, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7898513136742634733, guid: 087b3835c679f9e4da380fc2b5ec1163, type: 3}
       propertyPath: m_LocalScale.x

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7261279809325237332}
   - component: {fileID: 4111302795883078916}
   - component: {fileID: 8456208368587335918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5673819381301537540}
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750799468912446242}
-  m_Mesh: {fileID: 3852202848036260160, guid: c415e4324e2156149997873ade7227a1, type: 3}
+  m_Mesh: {fileID: -2269245349382216059, guid: e60f69879b8cfad42bea9deb1db3ca60, type: 3}
 --- !u!23 &8456208368587335918
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8251761687815336239}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5673819381301537540}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tile_DirtProps01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2202078380386046049, guid: 7b341c299b3b25940a2f505fdaa972db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.209
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2202078380386046049, guid: 7b341c299b3b25940a2f505fdaa972db, type: 3}
       propertyPath: m_LocalPosition.z
@@ -215,6 +215,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockCluster_C
       objectReference: {fileID: 0}
+    - target: {fileID: 6261147981652219201, guid: 7b341c299b3b25940a2f505fdaa972db, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -251,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2280243675604170396, guid: 2d3b4754ed5e3fb4e98c74142339dcfa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.242
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2280243675604170396, guid: 2d3b4754ed5e3fb4e98c74142339dcfa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -289,6 +293,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockCluster_A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7183423632717043806, guid: 2d3b4754ed5e3fb4e98c74142339dcfa, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -311,6 +319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockCluster_D (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1644264068636996073, guid: 88376b3c5312c15449689e0ad44d68e3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9125873587051721141, guid: 88376b3c5312c15449689e0ad44d68e3, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
@@ -329,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9125873587051721141, guid: 88376b3c5312c15449689e0ad44d68e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.198
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9125873587051721141, guid: 88376b3c5312c15449689e0ad44d68e3, type: 3}
       propertyPath: m_LocalPosition.z

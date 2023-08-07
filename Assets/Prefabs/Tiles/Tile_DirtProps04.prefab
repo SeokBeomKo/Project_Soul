@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6546156541001073380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tile_DirtProps04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4033174649623184137}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 678301200845669298}
   - component: {fileID: 67430560280427427}
   - component: {fileID: 563292922343524790}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6546156541001073380}
@@ -105,7 +105,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7523528173101448732}
-  m_Mesh: {fileID: 3852202848036260160, guid: c415e4324e2156149997873ade7227a1, type: 3}
+  m_Mesh: {fileID: -2269245349382216059, guid: e60f69879b8cfad42bea9deb1db3ca60, type: 3}
 --- !u!23 &563292922343524790
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -160,6 +160,10 @@ PrefabInstance:
     - target: {fileID: 1615709606450753495, guid: a236c5bd83a86794eac729c0abf23f79, type: 3}
       propertyPath: m_Name
       value: Menhir_Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615709606450753495, guid: a236c5bd83a86794eac729c0abf23f79, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5169576282981081356, guid: a236c5bd83a86794eac729c0abf23f79, type: 3}
       propertyPath: m_LocalPosition.x

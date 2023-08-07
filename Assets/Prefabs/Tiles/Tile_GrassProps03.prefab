@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7881819791466044244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 3477647795766434878}
   - component: {fileID: 6058792230592285858}
   - component: {fileID: 8647899133075920035}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8794565299359306691}
@@ -78,7 +78,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7503446173425156535}
-  m_Mesh: {fileID: 5103783478170635111, guid: a5812db3bae075a4e9e37ed27a1ce155, type: 3}
+  m_Mesh: {fileID: -2269245349382216059, guid: e60f69879b8cfad42bea9deb1db3ca60, type: 3}
 --- !u!23 &8647899133075920035
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8794565299359306691}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tile_GrassProps03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,13 +167,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassPatch (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 247075295260515064, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.407
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -229,13 +237,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassPatch
       objectReference: {fileID: 0}
+    - target: {fileID: 247075295260515064, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.158
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -291,13 +307,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassPatch (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 247075295260515064, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.532
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -353,13 +377,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassPatch (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 247075295260515064, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -415,13 +447,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassPatch (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 247075295260515064, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.304
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -477,13 +517,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassPatch (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 247075295260515064, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.515
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -539,13 +587,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassPatch (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 247075295260515064, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3823696161017416502, guid: 238186c156acdb143b6b52704edd65b1, type: 3}
       propertyPath: m_LocalPosition.z
