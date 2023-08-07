@@ -938,7 +938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &159236288
 Grid:
   m_ObjectHideFlags: 0
@@ -1349,6 +1349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4895856d9b34fc419f80c52cb80be5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileList: []
 --- !u!1001 &242661277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3958,7 +3959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 437683f7faaff9244a293f004cabb863, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.251
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 437683f7faaff9244a293f004cabb863, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6436,7 +6437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033125610158513919, guid: 95fdc07f9d81eeb4b97dd5dd7eee3cf4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.251
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8500709513404734051, guid: 95fdc07f9d81eeb4b97dd5dd7eee3cf4, type: 3}
       propertyPath: m_Layer
@@ -7250,6 +7251,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 336321438}
   cinemachineBrain: {fileID: 1949174323}
+  tileMapList:
+  - {fileID: 1735529652821343517, guid: 0f07f59e858aa8e46b26b1ec14212154, type: 3}
+  curTileMap: {fileID: 0}
 --- !u!114 &1089141707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9573,7 +9577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4655761785149466, guid: c1d74559dbd49e24b8238efe5044695a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.473
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 4655761785149466, guid: c1d74559dbd49e24b8238efe5044695a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11406,8 +11410,8 @@ Camera:
   m_GameObject: {fileID: 1949174318}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.6650944, g: 0.7953354, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -11486,7 +11490,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
