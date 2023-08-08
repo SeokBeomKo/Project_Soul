@@ -14,9 +14,6 @@ public class Player : Entity
 
     // TODO : 플레이어 정보 데이터화
 
-    [SerializeField]    public int                  attackRange;
-    [SerializeField]    public GameObject           attackTarget;
-
 
     private void Awake()
     {

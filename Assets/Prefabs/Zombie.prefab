@@ -1097,6 +1097,7 @@ GameObject:
   - component: {fileID: 2587243284063688497}
   - component: {fileID: 4327515914436280593}
   - component: {fileID: 7700118238826751336}
+  - component: {fileID: 2125011518176445367}
   m_Layer: 7
   m_Name: Scripts
   m_TagString: Untagged
@@ -1153,3 +1154,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4327515914436280593}
+--- !u!114 &2125011518176445367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3938378444254997979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c3d326ffa9fd2940a56b7010dc7453c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4327515914436280593}
+  types: 0

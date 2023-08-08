@@ -2,26 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovingState : IEnemyState
+namespace EnemySystem
 {
-    public Enemy enemy {get; set;}
-    public EnemyStateMachine stateMachine {get; set;}
-    public void Init(EnemyStateMachine _stateMachine)
+    public class EnemyMovingState : IEnemyState
     {
-        stateMachine = _stateMachine;
-        enemy = stateMachine.enemy;
-    }
-    public void Execute()
-    {
-        
-    }
+        public Enemy enemy {get; set;}
+        public EnemyStateMachine stateMachine {get; set;}
+        public void Init(EnemyStateMachine _stateMachine)
+        {
+            stateMachine = _stateMachine;
+            enemy = stateMachine.enemy;
+        }
+        public void Execute()
+        {
+            enemy.Moving();
+        }
 
-    public void OnStateEnter()
-    {
+        public void OnStateEnter()
+        {
+            enemy.ChangeAnimation(EnemyStateEnums.Moving.ToString());
+        }
+        public void OnStateExit()
+        {
 
+        }
     }
-    public void OnStateExit()
-    {
-
-    }
+    
 }

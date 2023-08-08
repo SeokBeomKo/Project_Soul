@@ -2,38 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStateMachine : MonoBehaviour
+namespace EnemySystem
 {
-    public Enemy enemy;
-    public IEnemyState curState;
-    public Dictionary<EnemyStateEnums, IEnemyState> stateDic;
-
-    private void Awake()
+    public class EnemyStateMachine : MonoBehaviour
     {
-        stateDic = new Dictionary<EnemyStateEnums, IEnemyState>
-        {
-            { EnemyStateEnums.Idle,      new EnemyIdleState()},
-            { EnemyStateEnums.Moving,    new EnemyMovingState()},
-            { EnemyStateEnums.Attack,    new EnemyAttackState()},
-            { EnemyStateEnums.Dead,      new EnemyDeadState()}
-        };
+        public Enemy enemy;
+        public IEnemyState curState;
+        public Dictionary<EnemyStateEnums, IEnemyState> stateDic;
 
-        foreach(IEnemyState Value in stateDic.Values)
+        private void Awake()
         {
-            Value.Init(this);
+            stateDic = new Dictionary<EnemyStateEnums, IEnemyState>
+            {
+                { EnemyStateEnums.Idle,      new EnemyIdleState()},
+                { EnemyStateEnums.Moving,    new EnemyMovingState()},
+                { EnemyStateEnums.Attack,    new EnemyAttackState()},
+                { EnemyStateEnums.Dead,      new EnemyDeadState()}
+            };
+
+            foreach(IEnemyState Value in stateDic.Values)
+            {
+                Value.Init(this);
+            }
+
+            ChangeState(EnemyStateEnums.Idle);
         }
 
-        ChangeState(EnemyStateEnums.Idle);
-    }
-
-    public void ChangeState(EnemyStateEnums newStateType)
-    {
-        if (null != curState)   curState.OnStateExit();
-
-        if (stateDic.TryGetValue(newStateType, out IEnemyState newState))
+        public void ChangeState(EnemyStateEnums newStateType)
         {
-            curState = newState;
-            curState.OnStateEnter();
+            if (null != curState)   curState.OnStateExit();
+
+            if (stateDic.TryGetValue(newStateType, out IEnemyState newState))
+            {
+                curState = newState;
+                curState.OnStateEnter();
+            }
         }
     }
+    
 }

@@ -10,6 +10,13 @@ abstract public class Entity : MonoBehaviour, IDamageable
     [SerializeField] public Vector3Int endPoint;            // 길 찾기 목표지점
     [SerializeField] public List<Vector3Int> pathTiles;       // 길 찾기 경로 정보
 
+    [SerializeField] public int                  attackRange;
+    [SerializeField] public GameObject           attackTarget;
+
+    // [SerializeField] public int MaxHP;
+    // [SerializeField] public int curHP;
+    // [SerializeField] public int attDamage;
+    // [SerializeField] public float attSpeed;
     [SerializeField] public float moveSpeed = 2f;       // 객체의 이동 속도
     [SerializeField] public Vector3 targetPosition;     // 객체의 이동 목표 지점
 
