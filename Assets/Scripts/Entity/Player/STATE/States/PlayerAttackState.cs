@@ -20,7 +20,7 @@ public class PlayerAttackState : IPlayerState
     public void OnStateEnter()
     {
         Debug.Log("Player State : (Enter)Player Attack State");
-        player.ChangeAnimation(PlayerStateType.Attack.ToString());
+        player.ChangeAnimation(PlayerStateEnums.Attack.ToString());
     }
     public void OnStateExit()
     {

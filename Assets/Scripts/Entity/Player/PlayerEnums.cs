@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum PlayerStateType
+public enum PlayerStateEnums
 {
     Idle,           // 플레이어 대기 상태
     Moving,         // 플레이어 이동 중인 상태
@@ -14,7 +14,7 @@ public enum PlayerStateType
     Hit01,          //
     Hit02,          //
 }
-public enum PlayerSoulType
+public enum PlayerTypeEnums
 {
     NONE,
     SWORD,

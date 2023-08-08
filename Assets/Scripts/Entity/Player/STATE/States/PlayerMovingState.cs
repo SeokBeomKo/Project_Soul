@@ -18,7 +18,7 @@ public class PlayerMovingState : IPlayerState
 
     public void OnStateEnter()
     {
-        player.ChangeAnimation(PlayerStateType.Moving.ToString());
+        player.ChangeAnimation(PlayerStateEnums.Moving.ToString());
         Debug.Log("Player State : (Enter)Player Moving State");
     }
     public void OnStateExit()

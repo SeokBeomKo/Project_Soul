@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyStateType
+public enum EnemyStateEnums
 {
     Idle,           // 적 대기 상태
     Moving,         // 적 이동 중인 상태
@@ -11,4 +11,12 @@ public enum EnemyStateType
     
     Hit01,          //
     Hit02,          //
+}
+
+public enum EnemyTypeEnums
+{
+    MELEE,
+    RANGE,
+
+    BOSS,
 }

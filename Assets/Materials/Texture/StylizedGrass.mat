@@ -101,7 +101,7 @@ Material:
     - _ColorMapHeight: 0
     - _ColorMapStrength: 0
     - _Cull: 0
-    - _Cutoff: 0.217
+    - _Cutoff: 0.665
     - _Darkening: 0.487
     - _DstBlend: 0
     - _EnvironmentReflections: 0
@@ -120,7 +120,7 @@ Material:
     - _NormalSpherify: 0
     - _NormalSpherifyMask: 0
     - _OcclusionStrength: 0
-    - _PerspectiveCorrection: 0.59
+    - _PerspectiveCorrection: 0.5
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _Scalemap: 0
@@ -135,13 +135,13 @@ Material:
     - _SubsurfaceKwToggle: 0
     - _Surface: 0
     - _Translucency: 1
-    - _TranslucencyDirect: 1
-    - _TranslucencyFalloff: 4
+    - _TranslucencyDirect: 0
+    - _TranslucencyFalloff: 1.09
     - _TranslucencyIndirect: 0
-    - _TranslucencyOffset: 0.06
+    - _TranslucencyOffset: 0
     - _TwoSided: 0
     - _VertexDarkening: 0
-    - _WindAmbientStrength: 0
+    - _WindAmbientStrength: 0.2
     - _WindFlutter: 0.559
     - _WindGustFreq: 0
     - _WindGustSpeed: 5
@@ -150,8 +150,8 @@ Material:
     - _WindObjectRand: 1
     - _WindQuality: 0
     - _WindRandSpeed: 1
-    - _WindRandStrength: 1
-    - _WindSpeed: 3.44
+    - _WindRandStrength: 0
+    - _WindSpeed: 3
     - _WindStr: 0.067
     - _WindStrength: 0.128
     - _WindStrengths: 1
@@ -160,10 +160,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.114150956, g: 0.5188679, b: 0, a: 1}
+    - _BaseColor: {r: 0.08784264, g: 0.3962264, b: 0.092125736, a: 1}
     - _BendTint: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0, g: 0.24528301, b: 0.006651284, a: 1}
     - _FadeFar: {r: 50, g: 100, b: 0, a: 0}
     - _FadeNear: {r: 0.25, g: 0.5, b: 0, a: 0}
     - _FadeParams: {r: 50, g: 100, b: 0, a: 0}

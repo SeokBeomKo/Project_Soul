@@ -6,8 +6,8 @@ using Tile;
 public class Player : Entity
 {
     [SerializeField]    public PlayerStateMachine   stateMachine;
-    [SerializeField]    public PlayerSoulFactory    soulFactory;
-    [SerializeField]    public PlayerSoul           soul;
+    [SerializeField]    public PlayerTypeFactory    soulFactory;
+    [SerializeField]    public PlayerType           soul;
 
     [SerializeField]    public Animator             playerAnimator;
     [SerializeField]    public string               curAnimation;
@@ -25,7 +25,7 @@ public class Player : Entity
 
     private void Start() 
     {
-        ChangeSoul(PlayerSoulType.NONE);
+        ChangeSoul(PlayerTypeEnums.NONE);
     }
 
     public void ChangeAnimation(string newAnimation)
@@ -37,7 +37,7 @@ public class Player : Entity
         curAnimation = newAnimation;
     }
 
-    public void ChangeSoul(PlayerSoulType soulType)
+    public void ChangeSoul(PlayerTypeEnums soulType)
     {
         // TODO : 무기,의상 모델, 애니메이터, VFX 변경
         soul = soulFactory.GetSoul(soulType);
