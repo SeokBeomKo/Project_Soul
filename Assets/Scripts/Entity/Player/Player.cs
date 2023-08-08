@@ -12,11 +12,14 @@ public class Player : Entity
     [SerializeField]    public Animator             playerAnimator;
     [SerializeField]    public string               curAnimation;
 
-    // TODO : 플레이어 정보 데이터화
+    [SerializeField]    public PlayerArea           playerArea;
+
+    public LayerMask clickableLayers;
 
 
     private void Awake()
     {
+        clickableLayers = ~(1 << LayerMask.NameToLayer("Area"));
         targetPosition = transform.parent.position;
     }
 

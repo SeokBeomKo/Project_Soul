@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemySystem
 {
-    abstract public class Enemy : Entity
+    abstract public class Enemy : Entity, IObserver
     {
         [SerializeField]    public EnemyStateMachine   stateMachine;
 
@@ -38,10 +38,19 @@ namespace EnemySystem
             }
         }
 
+        public void Notify()
+        {
+
+        }
+
         abstract public void Idle();
         abstract public void Moving();
         abstract public void Attack();
         abstract public void Skill();
+        public void RangeExamine()
+        {
+
+        }
         public void Dead()
         {
 

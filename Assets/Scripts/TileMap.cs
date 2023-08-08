@@ -17,7 +17,6 @@ public class TileMap : MonoBehaviour
                 //GameManager.Instance.nodeMap[position] = new TileNode(position, null, int.MaxValue, int.MaxValue);
             }
         }
-
         //GameManager.Instance.nodeMap[new Vector3Int(6, 0, 2)].isWalkable = false; // 예시로 (2,2) 위치에 벽 추가
     }
 

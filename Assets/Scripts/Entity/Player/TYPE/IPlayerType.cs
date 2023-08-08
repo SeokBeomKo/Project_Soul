@@ -30,7 +30,7 @@ abstract public class PlayerType : IPlayerType
         }
 
         Ray ray = GameManager.Instance.GetActiveVirtualCamera().ScreenPointToRay(Input.mousePosition);
-        if (!Physics.Raycast(ray, out RaycastHit hit))
+        if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, player.clickableLayers))
         {
             return;
         }
@@ -105,6 +105,7 @@ abstract public class PlayerType : IPlayerType
         {
             player.transform.position = targetPosition;
             UpdatePathIndex();
+            player.playerArea.NotifyObservers();
         }
     }
 

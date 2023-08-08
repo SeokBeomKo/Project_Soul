@@ -13,9 +13,11 @@ public class GameManager : Singleton<GameManager>
     // 씨네머신 카메라
     [SerializeField] public CinemachineBrain cinemachineBrain;
 
+    // 불러올 맵 정보
     [SerializeField] public List<TileMap> tileMapList;
-
+    // 현재 맵
     [SerializeField] public TileMap curTileMap;
+
     // 타일 맵 정보
     [SerializeField] public Dictionary<Vector3Int, TileNode> nodeMap;
 

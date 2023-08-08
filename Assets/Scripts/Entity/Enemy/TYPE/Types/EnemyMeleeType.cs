@@ -8,7 +8,7 @@ namespace EnemySystem
     {
         public override void Idle()
         {
-
+            
         }
         public override void Moving()
         {

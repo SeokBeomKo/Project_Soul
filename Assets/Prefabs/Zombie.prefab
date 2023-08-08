@@ -1095,9 +1095,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2587243284063688497}
-  - component: {fileID: 4327515914436280593}
   - component: {fileID: 7700118238826751336}
-  - component: {fileID: 2125011518176445367}
+  - component: {fileID: 1290052568469515982}
   m_Layer: 7
   m_Name: Scripts
   m_TagString: Untagged
@@ -1120,27 +1119,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4771946628154188}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4327515914436280593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3938378444254997979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea39fafc8595d12478f0eb5ad9bcf0c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curTilePosition: {x: 0, y: 0, z: 0}
-  startPoint: {x: 0, y: 0, z: 0}
-  endPoint: {x: 0, y: 0, z: 0}
-  pathTiles: []
-  moveSpeed: 2
-  targetPosition: {x: 0, y: 0, z: 0}
-  stateMachine: {fileID: 7700118238826751336}
-  enemyAnimator: {fileID: 95204435929642878}
-  curAnimation: 
 --- !u!114 &7700118238826751336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,8 +1131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c9309d8fed8094fbc647567cf42c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4327515914436280593}
---- !u!114 &2125011518176445367
+  enemy: {fileID: 1290052568469515982}
+--- !u!114 &1290052568469515982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1163,8 +1141,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 3938378444254997979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c3d326ffa9fd2940a56b7010dc7453c, type: 3}
+  m_Script: {fileID: 11500000, guid: 60a8c52b2efc60b40a0b34149d110288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4327515914436280593}
-  types: 0
+  curTilePosition: {x: 0, y: 0, z: 0}
+  startPoint: {x: 0, y: 0, z: 0}
+  endPoint: {x: 0, y: 0, z: 0}
+  pathTiles: []
+  attackRange: 0
+  attackTarget: {fileID: 0}
+  MaxHP: 0
+  curHP: 0
+  attDamage: 0
+  attSpeed: 0
+  moveSpeed: 2
+  targetPosition: {x: 0, y: 0, z: 0}
+  stateMachine: {fileID: 7700118238826751336}
+  enemyAnimator: {fileID: 95204435929642878}
+  curAnimation: 
