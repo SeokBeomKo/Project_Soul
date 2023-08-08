@@ -119,6 +119,9 @@ abstract public class PlayerType : IPlayerType
             // 이동 후 공격 대상이 있다면 공격 상태로 전환
             PlayerStateEnums nextState = player.attackTarget != null ? PlayerStateEnums.Attack : PlayerStateEnums.Idle;
             player.stateMachine.ChangeState(nextState);
+
+            // 인식범위 내에 있는 적들에게 위치 업데이트됐음을 알림
+            player.playerArea.NotifyObservers();
         }
     }
 

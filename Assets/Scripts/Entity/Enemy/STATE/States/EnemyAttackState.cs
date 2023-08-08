@@ -20,6 +20,7 @@ namespace EnemySystem
 
         public void OnStateEnter()
         {
+            enemy.transform.parent.LookAt(new Vector3(enemy.attackTarget.transform.position.x,0,enemy.attackTarget.transform.position.z));
             enemy.ChangeAnimation(EnemyStateEnums.Attack.ToString());
         }
         public void OnStateExit()

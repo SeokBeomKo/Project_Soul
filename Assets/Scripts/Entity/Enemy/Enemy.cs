@@ -40,16 +40,25 @@ namespace EnemySystem
 
         public void Notify()
         {
-
+            InRange();
         }
 
         abstract public void Idle();
         abstract public void Moving();
         abstract public void Attack();
         abstract public void Skill();
-        public void RangeExamine()
+        public void InRange()
         {
-
+            if (Vector3.Distance(GameManager.Instance.player.transform.position, transform.parent.position) <= attackRange)
+            {
+                attackTarget = GameManager.Instance.player.transform.parent.gameObject;
+                stateMachine.ChangeState(EnemyStateEnums.Attack);
+            }
+            else
+            {
+                attackTarget = null;
+                stateMachine.ChangeState(EnemyStateEnums.Idle);
+            }
         }
         public void Dead()
         {
