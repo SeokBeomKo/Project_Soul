@@ -6,26 +6,25 @@ using Tile;
 public class Player : Entity
 {
     [SerializeField]    public PlayerStateMachine   stateMachine;
-    [SerializeField]    public PlayerTypeFactory    soulFactory;
-    [SerializeField]    public PlayerType           soul;
+    [SerializeField]    public PlayerSoulFactory    soulFactory;
+    [SerializeField]    public PlayerSoul           soul;
 
     [SerializeField]    public Animator             playerAnimator;
     [SerializeField]    public string               curAnimation;
 
-    [SerializeField]    public PlayerArea           playerArea;
+    // TODO : 플레이어 정보 데이터화
 
-    public LayerMask clickableLayers;
-
+    [SerializeField]    public int                  attackRange;
+    [SerializeField]    public GameObject           attackTarget;
 
     private void Awake()
     {
-        clickableLayers = ~(1 << LayerMask.NameToLayer("Area"));
         targetPosition = transform.parent.position;
     }
 
     private void Start() 
     {
-        ChangeSoul(PlayerTypeEnums.NONE);
+        ChangeSoul(PlayerSoulType.NONE);
     }
 
     public void ChangeAnimation(string newAnimation)
@@ -37,7 +36,7 @@ public class Player : Entity
         curAnimation = newAnimation;
     }
 
-    public void ChangeSoul(PlayerTypeEnums soulType)
+    public void ChangeSoul(PlayerSoulType soulType)
     {
         // TODO : 무기,의상 모델, 애니메이터, VFX 변경
         soul = soulFactory.GetSoul(soulType);

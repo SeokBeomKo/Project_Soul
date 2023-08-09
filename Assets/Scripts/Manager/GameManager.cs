@@ -6,37 +6,16 @@ using Tile;
 
 public class GameManager : Singleton<GameManager>
 {
-    // 플레이어
     [SerializeField] private Player Player;
     public Player player { get => Player; } 
 
-    // 씨네머신 카메라
     [SerializeField] public CinemachineBrain cinemachineBrain;
 
-    // 불러올 맵 정보
-    [SerializeField] public List<TileMap> tileMapList;
-    // 현재 맵
-    [SerializeField] public TileMap curTileMap;
-
-    // 타일 맵 정보
     [SerializeField] public Dictionary<Vector3Int, TileNode> nodeMap;
-
-    int rand;
 
     private void Awake() 
     {
         nodeMap = new Dictionary<Vector3Int, TileNode>();
-
-        InitStage();
-    }
-
-    public void InitStage()
-    {
-        rand = Random.Range(0, tileMapList.Count);
-        curTileMap = tileMapList[rand];
-        curTileMap.Init();
-        Instantiate(curTileMap);
-        tileMapList.RemoveAt(rand);
     }
 
     public void InitPath()
@@ -49,9 +28,9 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void SetWalkable(Vector3Int _pos, bool _isWalkable)
+    public void SetWalkable(Vector3Int pos, bool isWalkable)
     {
-        nodeMap[_pos].isWalkable = _isWalkable;
+        nodeMap[pos].isWalkable = isWalkable;
     }
 
     public Camera GetActiveVirtualCamera()

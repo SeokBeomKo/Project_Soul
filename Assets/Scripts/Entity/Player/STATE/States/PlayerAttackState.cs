@@ -19,8 +19,6 @@ public class PlayerAttackState : IPlayerState
     public void OnStateEnter()
     {
         Debug.Log("Player State : (Enter)Player Attack State");
-        player.transform.parent.LookAt(new Vector3(player.attackTarget.transform.position.x,0,player.attackTarget.transform.position.z));
-        player.ChangeAnimation(PlayerStateEnums.Attack.ToString());
     }
     public void OnStateExit()
     {
