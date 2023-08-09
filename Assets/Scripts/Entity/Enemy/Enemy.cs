@@ -65,7 +65,7 @@ namespace EnemySystem
 
         }
 
-        public override IEnumerator Damaged()
+        public override IEnumerator Damaged(float _damage, float _ignore)
         {
             yield return WaitForSecondsPool.GetWaitForSeconds(0.1f);
         }

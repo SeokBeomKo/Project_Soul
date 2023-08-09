@@ -49,10 +49,24 @@ public class Player : Entity
         {
             stateMachine.curState.Execute();
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartCoroutine(Damaged(10,0));
+        }
     }
 
-    public override IEnumerator Damaged()
+    public override IEnumerator Damaged(float _damage, float _ignore)
     {
+        NotifyObservers();
+        if (curHP <= _damage - (defPower - _ignore))
+        {
+            curHP = 0f;
+            stateMachine.ChangeState(PlayerStateEnums.Dead);
+            yield break;
+        }
+
+        curHP -= 30f;
+
         yield return WaitForSecondsPool.GetWaitForSeconds(0.1f);
     }
 }
