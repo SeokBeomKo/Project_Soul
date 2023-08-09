@@ -76,7 +76,7 @@ namespace EnemySystem
             }
         }
 
-        public override IEnumerator Damaged()
+        public override IEnumerator Damaged(float _damage, float _ignore)
         {
             stateMachine.stateDic.TryGetValue(EnemyStateEnums.Idle, out IEnemyState newState);
             if (newState == stateMachine.curState)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Tile;
 
-abstract public class Entity : MonoBehaviour, IDamageable
+abstract public class Entity : MonoBehaviour, IDamageable, ISubject
 {
     public Vector3Int curTilePosition;     // 현재 타일 위치(키 값)
     public Vector3Int startPoint;          // 길 찾기 시작점
@@ -13,12 +13,35 @@ abstract public class Entity : MonoBehaviour, IDamageable
     [SerializeField] public int                  attackRange;
     [SerializeField] public GameObject           attackTarget;
 
-    [SerializeField] public int MaxHP;
-    [SerializeField] public int curHP;
+    [SerializeField] public float maxHP;
+    [SerializeField] public float curHP;
     [SerializeField] public int attDamage;
     [SerializeField] public float attSpeed;
+    [SerializeField] public float defPower;
     [SerializeField] public float moveSpeed = 2f;       // 객체의 이동 속도
     [SerializeField] public Vector3 targetPosition;     // 객체의 이동 목표 지점
 
-    public abstract IEnumerator Damaged();
+    public abstract IEnumerator Damaged(float _damage, float _ignore);
+
+    private List<IObserver> observers = new List<IObserver>();
+
+    public void RegisterObserver(IObserver observer)
+    {
+        Debug.Log("옵저버 등록");
+        observers.Add(observer);
+    }
+
+    public void RemoveObserver(IObserver observer)
+    {
+        Debug.Log("옵저버 해제");
+        observers.Remove(observer);
+    }
+
+    public void NotifyObservers()
+    {
+        foreach (var observer in observers)
+        {
+            observer.Notify();
+        }
+    }
 }

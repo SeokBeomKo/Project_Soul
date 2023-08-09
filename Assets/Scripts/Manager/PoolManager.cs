@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolManager : Singleton<GameManager>
+public class PoolManager : Singleton<PoolManager>
 {
     private Dictionary<string, object> _pools;
 
