@@ -18,18 +18,11 @@ namespace EnemySystem
         public int exp;             // 경험치
     }
 
-    [Serializable] public struct MeleeInfo
+    [Serializable] public struct EliteInfo
     {
         public float skillDelay;        // 스킬 대기시간
         public int skillDistance;       // 스킬 유지 거리
         public float skillSpeed;        // 스킬 발동시 이동 속도
-    }
-
-    [Serializable] public struct RangeInfo
-    {   
-        public float skillDelay;        // 스킬 대기시간
-        public int skillRange;          // 스킬 범위       (실제 데미지유효 거리)
-        public int skillAttack;         // 스킬 공격력
     }
 
     [Serializable] public struct BossInfo

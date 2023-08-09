@@ -16,6 +16,7 @@ namespace EnemySystem
             {
                 { EnemyStateEnums.Idle,      new EnemyIdleState()},
                 { EnemyStateEnums.Moving,    new EnemyMovingState()},
+                { EnemyStateEnums.Battle,    new EnemyBattleState()},
                 { EnemyStateEnums.Attack,    new EnemyAttackState()},
                 { EnemyStateEnums.Dead,      new EnemyDeadState()}
             };

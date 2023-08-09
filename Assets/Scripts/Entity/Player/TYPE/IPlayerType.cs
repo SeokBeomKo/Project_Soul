@@ -67,7 +67,6 @@ abstract public class PlayerType : IPlayerType
             return;
         }
 
-        //Debug.Log($"Clicked Enemy: Column Index: {targetTile.Value.x}, Row Index: {targetTile.Value.y}");
         player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector3Int.FloorToInt(player.transform.parent.position), targetTile.Value);
         GameManager.Instance.InitPath();
         player.stateMachine.ChangeState(PlayerStateEnums.Moving);

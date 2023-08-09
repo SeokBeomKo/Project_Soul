@@ -10,8 +10,7 @@ public class EnemyDataEditor : Editor
     EnemyData data;
 
     SerializedProperty enemyInfo; 
-    SerializedProperty meleeInfo; 
-    SerializedProperty rangeInfo;
+    SerializedProperty eliteInfo; 
     SerializedProperty bossInfo; 
 
     public void OnEnable() 
@@ -19,8 +18,7 @@ public class EnemyDataEditor : Editor
         {
             data = (EnemyData)target;
             enemyInfo = serializedObject.FindProperty("enemyInfo");
-            meleeInfo = serializedObject.FindProperty("meleeInfo");
-            rangeInfo = serializedObject.FindProperty("rangeInfo");
+            eliteInfo = serializedObject.FindProperty("eliteInfo");
             bossInfo = serializedObject.FindProperty("bossInfo");
         }
     }
@@ -31,13 +29,12 @@ public class EnemyDataEditor : Editor
         
         switch(data.Type)
         {
-            case EnemyTypeEnums.MELEE:
+            case EnemyTypeEnums.NORMAL:
                 EditorGUILayout.PropertyField(enemyInfo);
-                EditorGUILayout.PropertyField(meleeInfo);
                 break;
-            case EnemyTypeEnums.RANGE:
+            case EnemyTypeEnums.ELITE:
                 EditorGUILayout.PropertyField(enemyInfo);
-                EditorGUILayout.PropertyField(rangeInfo);
+                EditorGUILayout.PropertyField(eliteInfo);
                 break;
             case EnemyTypeEnums.BOSS:
                 EditorGUILayout.PropertyField(enemyInfo);

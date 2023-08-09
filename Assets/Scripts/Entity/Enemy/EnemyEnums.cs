@@ -9,6 +9,7 @@ namespace EnemySystem
     {
         Idle,           // 적 대기 상태
         Moving,         // 적 이동 중인 상태
+        Battle,         // 적 전투 돌입 상태
         Attack,         // 적 기본 공격 중인 상태
         Dead,           // 적 사망 상태
 
@@ -18,8 +19,8 @@ namespace EnemySystem
 
     public enum EnemyTypeEnums
     {
-        MELEE,
-        RANGE,
+        NORMAL,
+        ELITE,
 
         BOSS,
     }

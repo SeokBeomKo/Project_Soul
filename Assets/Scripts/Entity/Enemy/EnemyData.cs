@@ -10,8 +10,7 @@ namespace EnemySystem
         public EnemyTypeEnums Type;
 
         public EnemyInfo enemyInfo;
-        public MeleeInfo meleeInfo;
-        public RangeInfo rangeInfo;
+        public EliteInfo eliteInfo;
         public BossInfo bossInfo;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemySystem
 {
-    public class EnemyRangeType : Enemy
+    public class EnemyEliteType : Enemy
     {
         public override void Idle()
         {
@@ -13,6 +13,11 @@ namespace EnemySystem
         public override void Moving()
         {
 
+        }
+
+        public override void Battle()
+        {
+            
         }
         public override void Attack()
         {
