@@ -8,13 +8,11 @@ public class PlayerArea : MonoBehaviour, ISubject
 
     public void RegisterObserver(IObserver observer)
     {
-        Debug.Log("옵저버 등록");
         observers.Add(observer);
     }
 
     public void RemoveObserver(IObserver observer)
     {
-        Debug.Log("옵저버 해제");
         observers.Remove(observer);
     }
 

@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
 
     // 타일 맵 정보
     [SerializeField] public Dictionary<Vector3Int, TileNode> nodeMap;
+    [SerializeField] public List<GameObject> entities;
 
     int rand;
 

@@ -18,7 +18,7 @@ public class PlayerDeadState : IPlayerState
 
     public void OnStateEnter()
     {
-
+        player.ChangeAnimation(PlayerStateEnums.Dead.ToString());
     }
     public void OnStateExit()
     {
