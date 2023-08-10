@@ -9,6 +9,10 @@ public class SwordType : PlayerType
 
     }
 
+    public override void OnAttack()
+    {
+    }
+
     public override void Skill()
     {
         

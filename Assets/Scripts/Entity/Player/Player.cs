@@ -13,7 +13,9 @@ public class Player : Entity
 
     [SerializeField]    public PlayerArea           playerArea;
 
-    public LayerMask clickableLayers;
+    [HideInInspector]   public LayerMask clickableLayers;
+
+    [SerializeField]    public PlayerVFX            playerVFX;
 
 
     private void Awake()

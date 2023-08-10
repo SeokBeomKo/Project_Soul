@@ -10,6 +10,11 @@ public class NoneType : PlayerType
         //player.stateMachine.ChangeState(PlayerStateType.Idle);
     }
 
+    public override void OnAttack()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void Skill()
     {
         // 공격 불가

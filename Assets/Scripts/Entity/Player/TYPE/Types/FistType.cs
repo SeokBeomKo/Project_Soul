@@ -9,6 +9,11 @@ public class FistType : PlayerType
 
     }
 
+    public override void OnAttack()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void Skill()
     {
         

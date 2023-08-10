@@ -12,6 +12,8 @@ public interface IPlayerType
     void Attack();
     void Skill();
     void Dead();
+
+    void OnAttack();
 }
 
 public abstract class PlayerType : MonoBehaviour, IPlayerType
@@ -20,6 +22,8 @@ public abstract class PlayerType : MonoBehaviour, IPlayerType
 
     public abstract void Attack();
     public abstract void Skill();
+
+    public abstract void OnAttack();
 
     public void Idle()
     {
