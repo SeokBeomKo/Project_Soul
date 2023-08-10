@@ -14,12 +14,12 @@ public interface IPlayerType
     void Dead();
 }
 
-abstract public class PlayerType : IPlayerType
+public abstract class PlayerType : MonoBehaviour, IPlayerType
 {
-    public Player player {get; set;}
+    [SerializeField] public Player player{get; set;}
 
-    abstract public void Attack();
-    abstract public void Skill();
+    public abstract void Attack();
+    public abstract void Skill();
 
     public void Idle()
     {

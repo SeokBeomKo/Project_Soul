@@ -6,7 +6,6 @@ using Tile;
 public class Player : Entity
 {
     [SerializeField]    public PlayerStateMachine   stateMachine;
-    [SerializeField]    public PlayerTypeFactory    soulFactory;
     [SerializeField]    public PlayerType           soul;
 
     [SerializeField]    public Animator             playerAnimator;
@@ -21,11 +20,11 @@ public class Player : Entity
     {
         clickableLayers = ~(1 << LayerMask.NameToLayer("Area"));
         targetPosition = transform.parent.position;
+        soul.player = this;
     }
 
     private void Start() 
     {
-        ChangeSoul(PlayerTypeEnums.NONE);
     }
 
     public void ChangeAnimation(string newAnimation)
@@ -35,12 +34,6 @@ public class Player : Entity
         playerAnimator.Play(newAnimation);
 
         curAnimation = newAnimation;
-    }
-
-    public void ChangeSoul(PlayerTypeEnums soulType)
-    {
-        // TODO : 무기,의상 모델, 애니메이터, VFX 변경
-        soul = soulFactory.GetSoul(soulType);
     }
 
     private void Update()

@@ -6,6 +6,11 @@ public class PlayerAnimationEventHandler : MonoBehaviour
 {
     [SerializeField]    public PlayerVFX playerVFX;
 
+    public void Test(float a, float b)
+    {
+
+    }
+
     public void attackVFX01()
     {
         playerVFX.attack01.transform.parent.position = transform.position;
