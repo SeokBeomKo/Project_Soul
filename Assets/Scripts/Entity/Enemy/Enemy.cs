@@ -11,6 +11,8 @@ namespace EnemySystem
         [SerializeField]    public Animator             enemyAnimator;
         [SerializeField]    public string               curAnimation;
 
+        [SerializeField]    public HitEffectController  hitEffectController;
+
 
         private void Awake()
         {
@@ -76,24 +78,25 @@ namespace EnemySystem
             }
         }
 
-        public override IEnumerator Damaged(float _damage, float _ignore)
+        public override void Hit(float _damage, float _ignore)
         {
+            NotifyObservers();
+            float m_ftDamage = _damage - (defPower - _ignore);
+            if (curHP <= m_ftDamage)
+            {
+                curHP = 0f;
+                stateMachine.ChangeState(EnemyStateEnums.Dead);
+                return;
+            }
+
             stateMachine.stateDic.TryGetValue(EnemyStateEnums.Idle, out IEnemyState newState);
             if (newState == stateMachine.curState)
             {
                 stateMachine.ChangeState(EnemyStateEnums.Battle);
             }
 
-            // 피격
-
-            yield return WaitForSecondsPool.GetWaitForSeconds(0.1f);
-            
-            // 피격 후
-
-            if (curHP <= 0)
-            {
-                stateMachine.ChangeState(EnemyStateEnums.Dead);
-            }
+            curHP -= m_ftDamage;
+            hitEffectController.ApplyHitEffect();
         }
     }
 }

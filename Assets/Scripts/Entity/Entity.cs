@@ -21,19 +21,17 @@ abstract public class Entity : MonoBehaviour, IDamageable, ISubject
     [SerializeField] public float moveSpeed = 2f;       // 객체의 이동 속도
     [SerializeField] public Vector3 targetPosition;     // 객체의 이동 목표 지점
 
-    public abstract IEnumerator Damaged(float _damage, float _ignore);
+    public abstract void Hit(float _damage, float _ignore);
 
     private List<IObserver> observers = new List<IObserver>();
 
     public void RegisterObserver(IObserver observer)
     {
-        Debug.Log("옵저버 등록");
         observers.Add(observer);
     }
 
     public void RemoveObserver(IObserver observer)
     {
-        Debug.Log("옵저버 해제");
         observers.Remove(observer);
     }
 
@@ -43,5 +41,10 @@ abstract public class Entity : MonoBehaviour, IDamageable, ISubject
         {
             observer.Notify();
         }
+    }
+
+    void IDamageable.Hit(float _damage, float _ignore)
+    {
+        throw new System.NotImplementedException();
     }
 }

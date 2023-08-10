@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GunslingerBullet : MonoBehaviour
 {
+    void OnEnable()
+    {
+        StartCoroutine(DisableAfterSeconds());
+    }
     void Update()
     {
         transform.position += transform.forward * Time.deltaTime * 10f;
@@ -15,5 +19,16 @@ public class GunslingerBullet : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
+
+    void OnDisable()
+    {
+        StopCoroutine(DisableAfterSeconds());
+    }
+
+    private IEnumerator DisableAfterSeconds()
+    {
+        yield return WaitForSecondsPool.GetWaitForSeconds(1f);
+        gameObject.SetActive(false);
     }
 }

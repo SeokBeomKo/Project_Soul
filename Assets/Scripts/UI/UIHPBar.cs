@@ -19,6 +19,11 @@ public class UIHPBar : MonoBehaviour, IObserver
     }
     void Update()
     {
+        if (entity.curHP == 0)
+        {
+
+        }
+
         hpBase.fillAmount = Mathf.Lerp(hpBase.fillAmount, entity.curHP / entity.maxHP, Time.deltaTime * 5f);
 
         if(isHit)
@@ -34,13 +39,11 @@ public class UIHPBar : MonoBehaviour, IObserver
 
     public void Notify()
     {
-        Debug.Log("알람와썽");
         StartCoroutine(hpEffectUpdate());
     }
 
     public IEnumerator hpEffectUpdate()
     {
-        Debug.Log("코루틴");
         yield return WaitForSecondsPool.GetWaitForSeconds(0.5f);
         isHit = true;
     }

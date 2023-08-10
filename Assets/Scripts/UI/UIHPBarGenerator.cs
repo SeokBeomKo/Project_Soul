@@ -14,7 +14,7 @@ public class UIHPBarGenerator : MonoBehaviour
         List<GameObject> t_objList = new List<GameObject>();
 
         t_objList.Add(GameManager.Instance.player.transform.parent.gameObject);
-        //t_objList.AddRange(GameManager.Instance.entities);
+        t_objList.AddRange(GameManager.Instance.entities);
 
         for(int i = 0; i < t_objList.Count; i++)
         {

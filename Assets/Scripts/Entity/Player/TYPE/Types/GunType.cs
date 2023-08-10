@@ -17,6 +17,9 @@ public class GunType : PlayerType
     public override void OnAttack()
     {
         Instantiate(bullet, muzlle.position, player.transform.rotation);
+
+        player.attackTarget.GetComponent<Entity>().attackTarget = player.transform.parent.gameObject;
+        player.attackTarget.GetComponent<Entity>().Hit(player.attDamage,player.ignore);
     }
 
     public override void Skill()

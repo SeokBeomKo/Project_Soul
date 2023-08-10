@@ -5,6 +5,8 @@ using Tile;
 
 public class Player : Entity
 {
+    public float ignore = 0;
+
     [SerializeField]    public PlayerStateMachine   stateMachine;
     [SerializeField]    public PlayerType           soul;
 
@@ -46,22 +48,21 @@ public class Player : Entity
         }
         if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(Damaged(10,0));
+            Hit(10,0);
         }
     }
 
-    public override IEnumerator Damaged(float _damage, float _ignore)
+    public override void Hit(float _damage, float _ignore)
     {
         NotifyObservers();
-        if (curHP <= _damage - (defPower - _ignore))
+        float m_ftDamage = _damage - (defPower - _ignore);
+        if (curHP <= m_ftDamage)
         {
             curHP = 0f;
             stateMachine.ChangeState(PlayerStateEnums.Dead);
-            yield break;
+            return;
         }
 
-        curHP -= 30f;
-
-        yield return WaitForSecondsPool.GetWaitForSeconds(0.1f);
+        curHP -= m_ftDamage;
     }
 }
