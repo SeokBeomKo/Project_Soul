@@ -8,6 +8,7 @@ public class GreateSwordType : PlayerType
     {
         if (player.attackTarget.GetComponent<Entity>().curHP <= 0f)
         {
+            player.attackTarget = null;
             player.stateMachine.ChangeState(PlayerStateEnums.Idle);
         }
     }

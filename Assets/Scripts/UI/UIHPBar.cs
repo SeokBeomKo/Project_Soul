@@ -21,10 +21,8 @@ public class UIHPBar : MonoBehaviour, IObserver
     {
         if (entity.curHP == 0)
         {
-
+            gameObject.SetActive(false);
         }
-
-        hpBase.fillAmount = Mathf.Lerp(hpBase.fillAmount, entity.curHP / entity.maxHP, Time.deltaTime * 5f);
 
         if(isHit)
         {
@@ -39,6 +37,7 @@ public class UIHPBar : MonoBehaviour, IObserver
 
     public void Notify()
     {
+        hpBase.fillAmount = entity.curHP / entity.maxHP;
         StartCoroutine(hpEffectUpdate());
     }
 

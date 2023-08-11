@@ -6,10 +6,16 @@ public class GunType : PlayerType
 {
     public Transform muzlle;
     public GameObject bullet;
+
+    void Start()
+    {
+        PoolManager.Instance.AddPool("Bullet",bullet,10);
+    }
     public override void Attack()
     {
         if (player.attackTarget.GetComponent<Entity>().curHP <= 0f)
         {
+            player.attackTarget = null;
             player.stateMachine.ChangeState(PlayerStateEnums.Idle);
         }
     }

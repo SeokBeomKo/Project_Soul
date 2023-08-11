@@ -74,7 +74,7 @@ namespace EnemySystem
             if (enemyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
                 // TODO :사망
-                transform.gameObject.SetActive(false);
+                transform.parent.gameObject.SetActive(false);
             }
         }
 
