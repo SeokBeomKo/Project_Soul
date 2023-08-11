@@ -51,7 +51,6 @@ public class HitEffectController : MonoBehaviour
             propBlock.SetColor(BaseColor3, Color.red);
             characterRenderer.SetPropertyBlock(propBlock, i);
         }
-        
 
         yield return WaitForSecondsPool.GetWaitForSeconds(0.1f);
         

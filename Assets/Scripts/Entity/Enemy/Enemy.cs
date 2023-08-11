@@ -71,16 +71,15 @@ namespace EnemySystem
         }
         public void Dead()
         {
-            if (enemyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            if (enemyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f &&
+                enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
             {
-                // TODO :사망
                 transform.parent.gameObject.SetActive(false);
             }
         }
 
         public override void Hit(float _damage, float _ignore)
         {
-            NotifyObservers();
             float m_ftDamage = _damage - (defPower - _ignore);
             if (curHP <= m_ftDamage)
             {
@@ -96,6 +95,7 @@ namespace EnemySystem
             }
 
             curHP -= m_ftDamage;
+            NotifyObservers();
             hitEffectController.ApplyHitEffect();
         }
     }

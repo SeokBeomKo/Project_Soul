@@ -54,7 +54,6 @@ public class Player : Entity
 
     public override void Hit(float _damage, float _ignore)
     {
-        NotifyObservers();
         float m_ftDamage = _damage - (defPower - _ignore);
         if (curHP <= m_ftDamage)
         {
@@ -64,5 +63,6 @@ public class Player : Entity
         }
 
         curHP -= m_ftDamage;
+        NotifyObservers();
     }
 }
