@@ -6,8 +6,9 @@ public class GreateSwordType : PlayerType
 {
     private void OnEnable() 
     {
-        player.entityInfo.attRange = 1;
+        //player.entityInfo.attRange = 1;
     }
+
     public override void Attack()
     {
         if (player.attackTarget.entityInfo.hpCur <= 0f)

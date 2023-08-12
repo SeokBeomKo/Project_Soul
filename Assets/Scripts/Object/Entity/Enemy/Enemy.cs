@@ -30,7 +30,26 @@ namespace EnemySystem
         // 오브젝트 풀에서 가져올 시 초기화
         private void OnEnable() 
         {
+            if (GameManager.Instance.nodeMap.ContainsKey(new Vector2(transform.position.x,transform.position.z)))
+            {
+                GameManager.Instance.SetWalkable(new Vector2(transform.position.x,transform.position.y), false);
+            }
+
             entityInfo.hpCur = entityInfo.hpMax;
+        }
+
+        void OnDisable()
+        {
+            if (GameManager.Instance.nodeMap.ContainsKey(new Vector2(transform.position.x,transform.position.z)))
+            {
+                GameManager.Instance.SetWalkable(new Vector2(transform.position.x,transform.position.y), true);
+            }
+        }
+
+        private void Enenmy_OnMapLoaded()
+        {
+            // 맵 로딩이 완료된 후에 실행할 로직
+            GameManager.Instance.SetWalkable(new Vector2(transform.position.x,transform.position.y), false);
         }
 
         public void ChangeAnimation(string newAnimation)

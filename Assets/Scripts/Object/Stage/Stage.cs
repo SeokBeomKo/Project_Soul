@@ -8,7 +8,7 @@ public class Stage : MonoBehaviour
     // 스테이지의 전체 타일맵 정보
     [SerializeField] public List<TileMap> tilemapList;
     // 해당 스테이지에 필요한 몹 정보
-    [SerializeField] public List<EnemyData> enemyList;
+    [SerializeField] public List<GameObject> enemyList;
 
     private List<int> mapIndex;
     private int excludeIndex;
@@ -17,15 +17,29 @@ public class Stage : MonoBehaviour
     private void Awake() 
     {
         mapIndex        = new List<int>();
+    }
+
+    private void OnEnable()
+    {
         for(int i = 0; i < tilemapList.Count; i++)
         {
             mapIndex.Add(i);
         }
+        PoolEnemy();
+        SpawnTilemap();
     }
 
-    public void Init()
+    private void OnDisable()
     {
-        SpawnTilemap();
+        mapIndex.Clear();
+    }
+
+    public void PoolEnemy()
+    {
+        for(int i = 0; i < enemyList.Count; i++)
+        {
+            PoolManager.Instance.AddPool(enemyList[i].name, enemyList[i], 10);
+        }
     }
 
     public void NextTilemap()
@@ -35,18 +49,13 @@ public class Stage : MonoBehaviour
 
     private void SpawnTilemap()
     {
-        excludeIndex = GetExcludeIndex();
+        excludeIndex = Random.Range(0, mapIndex.Count);
         mapIndex.Remove(excludeIndex);
         Instantiate(tilemapList[excludeIndex],transform);
     }
 
-    private int GetExcludeIndex()
+    public void StageClear()
     {
-        return Random.Range(0, mapIndex.Count + 1);
-    }
-
-    public void ClearStage()
-    {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

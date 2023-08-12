@@ -16,6 +16,7 @@ namespace Tile
     public class TileNode : IComparable<TileNode>
     {
         public Info infoNode = Info.Null;
+        
         public bool isWalkable = true;
         public Vector2 Position { get; set; }
         public TileNode Parent { get; set; }

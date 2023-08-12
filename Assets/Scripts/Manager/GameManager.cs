@@ -13,31 +13,21 @@ public class GameManager : Singleton<GameManager>
     // 씨네머신 카메라
     [SerializeField] public CinemachineBrain cinemachineBrain;
 
-    // 불러올 맵 정보
-    [SerializeField] public List<TileMap> tileMapList;
-    // 현재 맵
-    [SerializeField] public TileMap curTileMap;
+    // 스테이지 컨트롤러
+    [SerializeField] public StageController stageController;
 
-    // 타일 맵 정보
-    [SerializeField] public Dictionary<Vector2, TileNode> nodeMap;
-    [SerializeField] public List<GameObject> entities;
-
-    int rand;
+    // 현재 맵 정보
+    [SerializeField] public Dictionary<Vector2, TileNode> nodeMap;      // 현재 타일맵 경로
+    [SerializeField] public List<GameObject> entities;                  // 현재 타일맵 엔티티
 
     private void Awake() 
     {
         nodeMap = new Dictionary<Vector2, TileNode>();
-
-        InitStage();
     }
 
-    public void InitStage()
+    void Start()
     {
-        rand = Random.Range(0, tileMapList.Count);
-        curTileMap = tileMapList[rand];
-        curTileMap.Init();
-        Instantiate(curTileMap);
-        tileMapList.RemoveAt(rand);
+        stageController.Init();
     }
 
     public void InitPath()
@@ -59,5 +49,4 @@ public class GameManager : Singleton<GameManager>
     {  
         return cinemachineBrain.OutputCamera;
     }
-
 }

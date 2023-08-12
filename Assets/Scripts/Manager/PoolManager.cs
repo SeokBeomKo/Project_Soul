@@ -27,10 +27,10 @@ public class PoolManager : Singleton<PoolManager>
     /// <summary>
     /// 주어진 매개변수를 사용하여 풀(Pool)을 생성하고, 해당 풀에 게임 오브젝트들을 추가합니다.
     /// </summary>
-    /// <param name="tag">게임 오브젝트를 구분하는 태그입니다.</param>
-    /// <param name="prefab">생성할 게임 오브젝트의 프리팹입니다.</param>
-    /// <param name="size">풀에 저장할 게임 오브젝트의 수입니다.</param>
-    public void AddPool(string tag, GameObject prefab, int size)
+    /// <param name="_tag">게임 오브젝트를 구분하는 태그입니다.</param>
+    /// <param name="_prefab">생성할 게임 오브젝트의 프리팹입니다.</param>
+    /// <param name="_size">풀에 저장할 게임 오브젝트의 수입니다.</param>
+    public void AddPool(string _tag, GameObject _prefab, int _size)
     {
         if (poolDictionary.ContainsKey(tag))
         {
@@ -39,7 +39,7 @@ public class PoolManager : Singleton<PoolManager>
         }
 
         // 새로운 Pool 객체를 생성합니다.
-        Pool newPool = new Pool {tag = tag, prefab = prefab, size = size};
+        Pool newPool = new Pool {tag = tag, prefab = _prefab, size = _size};
         pools.Add(newPool);
 
         CreatePools(new List<Pool> { newPool });

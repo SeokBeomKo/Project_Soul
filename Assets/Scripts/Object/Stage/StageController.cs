@@ -7,7 +7,7 @@ public class StageController : MonoBehaviour
     [SerializeField] private List<Stage> stages;
     [SerializeField] public int         curstage;
 
-    private void Start() 
+    public void Init() 
     {
         curstage = 0;
         SpawnCurStage();
@@ -15,7 +15,7 @@ public class StageController : MonoBehaviour
 
     private void SpawnCurStage()
     {
-        Instantiate(stages[curstage],transform);
+        stages[curstage].gameObject.SetActive(true);
     }
 
     public void NextStage()

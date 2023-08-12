@@ -5,6 +5,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     private static T _instance;
     private static object _lock = new object();
 
+    public static bool destroyOnLoad = false;
+
     public static T Instance
     {
         get
@@ -26,12 +28,25 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         _instance = singleton.AddComponent<T>();
                         singleton.name = "(singleton) " + typeof(T).ToString();
 
-                        DontDestroyOnLoad(singleton);
+                        // 변경된 부분
+                        if (!Singleton<T>.destroyOnLoad)
+                        {
+                            DontDestroyOnLoad(singleton);
+                        }
                     }
                 }
             }
 
             return _instance;
+        }
+    }
+
+    // 신규 추가된 부분
+    protected virtual void OnDestroy()
+    {
+        if (Instance != null && Equals(Instance, this))
+        {
+            _instance = null;
         }
     }
 }
