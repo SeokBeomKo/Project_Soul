@@ -19,14 +19,14 @@ public class UIHPBar : MonoBehaviour, IObserver
     }
     void Update()
     {
-        if (entity.curHP == 0)
+        if (entity.entityInfo.hpCur == 0)
         {
             gameObject.SetActive(false);
         }
 
         if(isHit)
         {
-            hpEffect.fillAmount = Mathf.Lerp(hpEffect.fillAmount, entity.curHP / entity.maxHP, Time.deltaTime * 5f);
+            hpEffect.fillAmount = Mathf.Lerp(hpEffect.fillAmount, entity.entityInfo.hpCur / entity.entityInfo.hpMax, Time.deltaTime * 5f);
             if(hpEffect.fillAmount <= hpBase.fillAmount + 0.01f)
             {
                 hpEffect.fillAmount = hpBase.fillAmount;
@@ -37,7 +37,7 @@ public class UIHPBar : MonoBehaviour, IObserver
 
     public void Notify()
     {
-        hpBase.fillAmount = entity.curHP / entity.maxHP;
+        hpBase.fillAmount = entity.entityInfo.hpCur / entity.entityInfo.hpMax;
         StartCoroutine(hpEffectUpdate());
     }
 

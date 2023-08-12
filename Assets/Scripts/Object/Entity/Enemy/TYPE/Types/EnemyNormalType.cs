@@ -21,7 +21,7 @@ namespace EnemySystem
             if (Vector3.Distance(transform.parent.position, targetPosition) > Mathf.Epsilon)
             {
                 transform.parent.LookAt(targetPosition);
-                transform.parent.position = Vector3.MoveTowards(transform.parent.position, targetPosition, moveSpeed * Time.deltaTime);
+                transform.parent.position = Vector3.MoveTowards(transform.parent.position, targetPosition, entityInfo.moveSpeed * Time.deltaTime);
             }
             else
             {
@@ -46,7 +46,7 @@ namespace EnemySystem
         public override void Battle()
         {
             // 사거리 이내라면 공격
-            if (Vector3Int.Distance(Vector3Int.FloorToInt(attackTarget.transform.position), Vector3Int.FloorToInt(transform.parent.position)) <= attackRange)
+            if (Vector3.Distance(attackTarget.transform.position, transform.parent.position) <= entityInfo.attRange)
             {
                 stateMachine.ChangeState(EnemyStateEnums.Attack);
                 return;
@@ -54,7 +54,7 @@ namespace EnemySystem
 
             // 사거리 밖이라면 이동
             Vector2? targetTile = AStarAlgorithm.FindNearWalkableTile(new Vector2(transform.parent.position.x,transform.parent.position.z), 
-                new Vector2(attackTarget.transform.position.x,attackTarget.transform.position.z), attackRange);
+                new Vector2(attackTarget.transform.position.x,attackTarget.transform.position.z), entityInfo.attRange);
             if (!targetTile.HasValue)
             {
                 return;
@@ -66,7 +66,33 @@ namespace EnemySystem
         }
         public override void Attack()
         {
+            if (attackTarget.entityInfo.hpCur <= 0f)
+            {
+                attackTarget = null;
+                stateMachine.ChangeState(EnemyStateEnums.Idle);
+            }
         }
+
+        public override void OnAttack()
+        {
+            if(null == attVFX)
+            {
+                return;
+            }
+
+            attVFX.SetActive(true);
+        }
+
+        public override void OffAttack()
+        {
+            if(null == attVFX)
+            {
+                return;
+            }
+
+            attVFX.SetActive(false);
+        }
+
         public override void Skill()
         {
 

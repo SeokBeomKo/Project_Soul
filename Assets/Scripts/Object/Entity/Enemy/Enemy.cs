@@ -6,17 +6,21 @@ namespace EnemySystem
 {
     abstract public class Enemy : Entity, IObserver, IDamageable
     {
-        [SerializeField]    public EnemyStateMachine   stateMachine;
+        [SerializeField]    public EnemyData            enemyData;
+        [SerializeField]    public EnemyStateMachine    stateMachine;
 
         [SerializeField]    public Animator             enemyAnimator;
         [SerializeField]    public string               curAnimation;
 
         [SerializeField]    public HitEffectController  hitEffectController;
 
+        [SerializeField]    public GameObject           attVFX;
+
 
         private void Awake()
         {
-            targetPosition = transform.parent.position;
+            moveTarget = transform.parent.position;
+            entityInfo = enemyData.enemyInfo;
         }
 
         private void Start() 
@@ -26,7 +30,7 @@ namespace EnemySystem
         // 오브젝트 풀에서 가져올 시 초기화
         private void OnEnable() 
         {
-            
+            entityInfo.hpCur = entityInfo.hpMax;
         }
 
         public void ChangeAnimation(string newAnimation)
@@ -51,16 +55,18 @@ namespace EnemySystem
             InRange();
         }
 
-        abstract public void Idle();
-        abstract public void Moving();
-        abstract public void Battle();
-        abstract public void Attack();
-        abstract public void Skill();
+        public abstract void Idle();
+        public abstract void Moving();
+        public abstract void Battle();
+        public abstract void Attack();
+        public abstract void OnAttack();
+        public abstract void OffAttack();
+        public abstract void Skill();
         public void InRange()
         {
-            if (Vector3.Distance(GameManager.Instance.player.transform.parent.position, transform.parent.position) <= attackRange)
+            if (Vector3.Distance(GameManager.Instance.player.transform.parent.position, transform.parent.position) <= entityInfo.attRange)
             {
-                attackTarget = GameManager.Instance.player.transform.parent.gameObject;
+                attackTarget = GameManager.Instance.player.GetComponent<Entity>();
                 stateMachine.ChangeState(EnemyStateEnums.Attack);
             }
             else
@@ -80,10 +86,10 @@ namespace EnemySystem
 
         public override void Hit(float _damage, float _ignore)
         {
-            float m_ftDamage = _damage - (defPower - _ignore);
-            if (curHP <= m_ftDamage)
+            float m_ftDamage = _damage - (entityInfo.defPower - _ignore);
+            if (entityInfo.hpCur <= m_ftDamage)
             {
-                curHP = 0f;
+                entityInfo.hpCur = 0f;
                 stateMachine.ChangeState(EnemyStateEnums.Dead);
                 return;
             }
@@ -94,7 +100,7 @@ namespace EnemySystem
                 stateMachine.ChangeState(EnemyStateEnums.Battle);
             }
 
-            curHP -= m_ftDamage;
+            entityInfo.hpCur -= m_ftDamage;
             NotifyObservers();
             hitEffectController.ApplyHitEffect();
         }

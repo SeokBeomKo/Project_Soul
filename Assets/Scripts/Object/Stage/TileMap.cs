@@ -6,6 +6,7 @@ using Tile;
 public class TileMap : MonoBehaviour
 {
     [SerializeField]    public List<Transform> tileList;
+    [SerializeField]    public Dictionary<string, Vector2> enemySpwanData;
 
     public void Init()
     {

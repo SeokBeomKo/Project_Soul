@@ -5,8 +5,6 @@ using Tile;
 
 public class Player : Entity
 {
-    public float ignore = 0;
-
     [SerializeField]    public PlayerStateMachine   stateMachine;
     [SerializeField]    public PlayerType           soul;
 
@@ -15,7 +13,7 @@ public class Player : Entity
 
     [SerializeField]    public PlayerArea           playerArea;
 
-    [HideInInspector]   public LayerMask clickableLayers;
+    [HideInInspector]   public LayerMask            clickableLayers;
 
     [SerializeField]    public PlayerVFX            playerVFX;
 
@@ -23,12 +21,25 @@ public class Player : Entity
     private void Awake()
     {
         clickableLayers = ~(1 << LayerMask.NameToLayer("Area"));
-        targetPosition = transform.parent.position;
+        moveTarget = transform.parent.position;
         soul.player = this;
+
+        entityInfo.name = "player";     // 이름
+        entityInfo.moveSpeed = 2f;  // 이동 속도
+    
+        entityInfo.hpMax = 100;      // 최대 체력
+        entityInfo.attRange = 1;   // 공격 사거리
+        entityInfo.attSpeed = 1;   // 공격 속도
     }
 
     private void Start() 
     {
+        entityInfo.hpCur = entityInfo.hpMax;      // 현재 체력
+    
+        entityInfo.attDamage = 10;  // 공격력
+    
+        entityInfo.defPower = 0;   // 방어력
+        entityInfo.ignPower = 0;   // 관통력
     }
 
     public void ChangeAnimation(string newAnimation)
@@ -54,15 +65,15 @@ public class Player : Entity
 
     public override void Hit(float _damage, float _ignore)
     {
-        float m_ftDamage = _damage - (defPower - _ignore);
-        if (curHP <= m_ftDamage)
+        float m_ftDamage = _damage - (entityInfo.defPower - _ignore);
+        if (entityInfo.hpCur <= m_ftDamage)
         {
-            curHP = 0f;
+            entityInfo.hpCur = 0f;
             stateMachine.ChangeState(PlayerStateEnums.Dead);
             return;
         }
 
-        curHP -= m_ftDamage;
+        entityInfo.hpCur -= m_ftDamage;
         NotifyObservers();
     }
 }

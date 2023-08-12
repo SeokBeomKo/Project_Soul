@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using EnemySystem;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Stage : MonoBehaviour
 {
     // 스테이지의 전체 타일맵 정보
-    [SerializeField] public List<Tilemap> tilemapList;
+    [SerializeField] public List<TileMap> tilemapList;
     // 해당 스테이지에 필요한 몹 정보
-    [SerializeField] public Dictionary<string, Enemy> enemyDic;
+    [SerializeField] public List<EnemyData> enemyList;
 
     private List<int> mapIndex;
     private int excludeIndex;
@@ -18,15 +17,14 @@ public class Stage : MonoBehaviour
     private void Awake() 
     {
         mapIndex        = new List<int>();
-    }
-
-    private void Start() 
-    {
         for(int i = 0; i < tilemapList.Count; i++)
         {
             mapIndex.Add(i);
         }
+    }
 
+    public void Init()
+    {
         SpawnTilemap();
     }
 

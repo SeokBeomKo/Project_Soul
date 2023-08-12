@@ -21,7 +21,18 @@ namespace EnemySystem
         }
         public override void Attack()
         {
+            if (attackTarget.entityInfo.hpCur <= 0f)
+            {
+                attackTarget = null;
+                stateMachine.ChangeState(EnemyStateEnums.Idle);
+            }
+        }
+        public override void OnAttack()
+        {
+        }
 
+        public override void OffAttack()
+        {
         }
         public override void Skill()
         {

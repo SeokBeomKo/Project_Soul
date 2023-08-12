@@ -25,7 +25,7 @@ namespace EnemySystem
         }
         public void OnStateExit()
         {
-
+            enemy.OffAttack();
         }
     }
     

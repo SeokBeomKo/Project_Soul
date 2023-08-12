@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class GreateSwordType : PlayerType
 {
+    private void OnEnable() 
+    {
+        player.entityInfo.attRange = 1;
+    }
     public override void Attack()
     {
-        if (player.attackTarget.GetComponent<Entity>().curHP <= 0f)
+        if (player.attackTarget.entityInfo.hpCur <= 0f)
         {
             player.attackTarget = null;
             player.stateMachine.ChangeState(PlayerStateEnums.Idle);
@@ -20,7 +24,7 @@ public class GreateSwordType : PlayerType
         player.playerVFX.attack[m_iAttackIndex].Play();
         m_iAttackIndex = (m_iAttackIndex + 1) % player.playerVFX.attack.Count;
 
-        player.attackTarget.GetComponent<Entity>().Hit(player.attDamage,player.ignore);
+        player.attackTarget.GetComponent<Entity>().Hit(player.entityInfo.attDamage,player.entityInfo.ignPower);
     }
 
     public override void Skill()

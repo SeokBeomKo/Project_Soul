@@ -11,9 +11,15 @@ public class GunType : PlayerType
     {
         PoolManager.Instance.AddPool("Bullet",bullet,10);
     }
+
+    private void OnEnable() 
+    {
+        player.entityInfo.attRange = 2;
+    }
+
     public override void Attack()
     {
-        if (player.attackTarget.GetComponent<Entity>().curHP <= 0f)
+        if (player.attackTarget.entityInfo.hpCur <= 0f)
         {
             player.attackTarget = null;
             player.stateMachine.ChangeState(PlayerStateEnums.Idle);
@@ -24,8 +30,8 @@ public class GunType : PlayerType
     {
         Instantiate(bullet, muzlle.position, player.transform.rotation);
 
-        player.attackTarget.GetComponent<Entity>().attackTarget = player.transform.parent.gameObject;
-        player.attackTarget.GetComponent<Entity>().Hit(player.attDamage,player.ignore);
+        player.attackTarget.attackTarget = player;
+        player.attackTarget.Hit(player.entityInfo.attDamage,player.entityInfo.ignPower);
     }
 
     public override void Skill()

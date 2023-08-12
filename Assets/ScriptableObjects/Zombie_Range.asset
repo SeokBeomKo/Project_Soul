@@ -10,28 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1824c67a2535d2e48b30f3bea31f3b8f, type: 3}
-  m_Name: EnemyData
+  m_Name: Zombie_Range
   m_EditorClassIdentifier: 
   Type: 0
   enemyInfo:
-    name: 
-    moveSpeed: 0
-    hp: 0
-    range: 0
-    attack: 0
-    attackDelay: 0
-    ignore: 0
-    defence: 0
-    exp: 0
-  normalInfo:
+    name: Zombie_Range
+    moveSpeed: 1
+    hpMax: 50
+    hpCur: 0
+    attRange: 2
+    attSpeed: 1
+    attDamage: 10
+    defPower: 0
+    ignPower: 0
+  eliteInfo:
     skillDelay: 0
     skillDistance: 0
     skillSpeed: 0
-  dashInfo:
-    skillDelay: 0
-    skillRange: 0
-    skillAttack: 0
-  bombInfo:
+  bossInfo:
     skillDelay: 0
     skillRange: 0
     skillAttack: 0

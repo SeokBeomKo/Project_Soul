@@ -15,12 +15,10 @@ public class EnemyDataEditor : Editor
 
     public void OnEnable() 
     {
-        {
-            data = (EnemyData)target;
-            enemyInfo = serializedObject.FindProperty("enemyInfo");
-            eliteInfo = serializedObject.FindProperty("eliteInfo");
-            bossInfo = serializedObject.FindProperty("bossInfo");
-        }
+        data = (EnemyData)target;
+        enemyInfo = serializedObject.FindProperty("enemyInfo");
+        eliteInfo = serializedObject.FindProperty("eliteInfo");
+        bossInfo = serializedObject.FindProperty("bossInfo");
     }
 
     public override void OnInspectorGUI()

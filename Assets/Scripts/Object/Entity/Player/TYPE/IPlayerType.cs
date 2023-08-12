@@ -51,7 +51,7 @@ public abstract class PlayerType : MonoBehaviour, IPlayerType
         // 적 오브젝트를 감지했을 경우 처리
         if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            player.attackTarget = hit.collider.gameObject;  // 플레이어의 공격 대상 설정
+            player.attackTarget = hit.collider.gameObject.GetComponent<Entity>();  // 플레이어의 공격 대상 설정
             EnemyClick(playerPosition, clickedPosition);
         }
     }
@@ -59,14 +59,14 @@ public abstract class PlayerType : MonoBehaviour, IPlayerType
     private void EnemyClick(Vector2 playerPosition, Vector2 clickedPosition)
     {
         // 사거리 이내라면 공격
-        if (Vector2.Distance(playerPosition, clickedPosition) <= player.attackRange)
+        if (Vector2.Distance(playerPosition, clickedPosition) <= player.entityInfo.attRange)
         {
             player.stateMachine.ChangeState(PlayerStateEnums.Attack);
             return;
         }
 
         // 사거리 밖이라면 이동
-        Vector2? targetTile = AStarAlgorithm.FindNearWalkableTile(playerPosition, clickedPosition, player.attackRange);
+        Vector2? targetTile = AStarAlgorithm.FindNearWalkableTile(playerPosition, clickedPosition, player.entityInfo.attRange);
         if (!targetTile.HasValue)
         {
             return;
@@ -103,7 +103,7 @@ public abstract class PlayerType : MonoBehaviour, IPlayerType
         if (Vector3.Distance(player.transform.parent.position, targetPosition) > Mathf.Epsilon)
         {
             player.transform.parent.LookAt(targetPosition);
-            player.transform.parent.position = Vector3.MoveTowards(player.transform.parent.position, targetPosition, player.moveSpeed * Time.deltaTime);
+            player.transform.parent.position = Vector3.MoveTowards(player.transform.parent.position, targetPosition, player.entityInfo.moveSpeed * Time.deltaTime);
         }
         else
         {
