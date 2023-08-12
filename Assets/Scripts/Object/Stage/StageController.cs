@@ -7,12 +7,13 @@ public class StageController : MonoBehaviour
     [SerializeField] private List<Stage> stages;
     [SerializeField] public int         curstage;
 
-    private void Awake() 
+    private void Start() 
     {
-        curstage = 0;    
+        curstage = 0;
+        SpawnCurStage();
     }
 
-    public void CurStage()
+    private void SpawnCurStage()
     {
         Instantiate(stages[curstage],transform);
     }
@@ -20,7 +21,7 @@ public class StageController : MonoBehaviour
     public void NextStage()
     {
         curstage++;
-    }
 
-    
+        SpawnCurStage();
+    }
 }

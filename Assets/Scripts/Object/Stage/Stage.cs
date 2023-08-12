@@ -11,15 +11,44 @@ public class Stage : MonoBehaviour
     // 해당 스테이지에 필요한 몹 정보
     [SerializeField] public Dictionary<string, Enemy> enemyDic;
 
-    [SerializeField] public List<int> mapIndex;
-    [SerializeField] public List<int> excludeIndex;
+    private List<int> mapIndex;
+    private int excludeIndex;
+
 
     private void Awake() 
     {
-        mapIndex = new List<int>();
+        mapIndex        = new List<int>();
     }
 
+    private void Start() 
+    {
+        for(int i = 0; i < tilemapList.Count; i++)
+        {
+            mapIndex.Add(i);
+        }
 
+        SpawnTilemap();
+    }
 
+    public void NextTilemap()
+    {
+        SpawnTilemap();
+    }
 
+    private void SpawnTilemap()
+    {
+        excludeIndex = GetExcludeIndex();
+        mapIndex.Remove(excludeIndex);
+        Instantiate(tilemapList[excludeIndex],transform);
+    }
+
+    private int GetExcludeIndex()
+    {
+        return Random.Range(0, mapIndex.Count + 1);
+    }
+
+    public void ClearStage()
+    {
+        Destroy(gameObject);
+    }
 }
