@@ -8,7 +8,7 @@ abstract public class Entity : MonoBehaviour, IDamageable, ISubject
     public Vector3Int curTilePosition;     // 현재 타일 위치(키 값)
     public Vector3Int startPoint;          // 길 찾기 시작점
     public Vector3Int endPoint;            // 길 찾기 목표지점
-    public List<Vector3Int> pathTiles;       // 길 찾기 경로 정보
+    public List<Vector2> pathTiles;       // 길 찾기 경로 정보
 
     [SerializeField] public int                  attackRange;
     [SerializeField] public GameObject           attackTarget;

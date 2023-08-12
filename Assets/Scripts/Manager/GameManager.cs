@@ -19,14 +19,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public TileMap curTileMap;
 
     // 타일 맵 정보
-    [SerializeField] public Dictionary<Vector3Int, TileNode> nodeMap;
+    [SerializeField] public Dictionary<Vector2, TileNode> nodeMap;
     [SerializeField] public List<GameObject> entities;
 
     int rand;
 
     private void Awake() 
     {
-        nodeMap = new Dictionary<Vector3Int, TileNode>();
+        nodeMap = new Dictionary<Vector2, TileNode>();
 
         InitStage();
     }
@@ -42,7 +42,7 @@ public class GameManager : Singleton<GameManager>
 
     public void InitPath()
     {
-        foreach (KeyValuePair<Vector3Int, TileNode> entry in nodeMap)
+        foreach (KeyValuePair<Vector2, TileNode> entry in nodeMap)
         {
             entry.Value.G = int.MaxValue;
             entry.Value.H = int.MaxValue;
@@ -50,7 +50,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void SetWalkable(Vector3Int _pos, bool _isWalkable)
+    public void SetWalkable(Vector2 _pos, bool _isWalkable)
     {
         nodeMap[_pos].isWalkable = _isWalkable;
     }

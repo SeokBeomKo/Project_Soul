@@ -17,7 +17,7 @@ namespace EnemySystem
             {
                 return;
             }
-            Vector3 targetPosition = new Vector3(pathTiles[currentPathIndex].x, 0, pathTiles[currentPathIndex].z);
+            Vector3 targetPosition = new Vector3(pathTiles[currentPathIndex].x, 0, pathTiles[currentPathIndex].y);
             if (Vector3.Distance(transform.parent.position, targetPosition) > Mathf.Epsilon)
             {
                 transform.parent.LookAt(targetPosition);
@@ -53,13 +53,14 @@ namespace EnemySystem
             }
 
             // 사거리 밖이라면 이동
-            Vector3Int? targetTile = AStarAlgorithm.FindNearWalkableTile(Vector3Int.FloorToInt(transform.parent.position), Vector3Int.FloorToInt(attackTarget.transform.position), attackRange);
+            Vector2? targetTile = AStarAlgorithm.FindNearWalkableTile(new Vector2(transform.parent.position.x,transform.parent.position.z), 
+                new Vector2(attackTarget.transform.position.x,attackTarget.transform.position.z), attackRange);
             if (!targetTile.HasValue)
             {
                 return;
             }
 
-            pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector3Int.FloorToInt(transform.parent.position), targetTile.Value);
+            pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector2Int.FloorToInt(new Vector2(transform.parent.position.x,transform.parent.position.y)), targetTile.Value);
             GameManager.Instance.InitPath();
             stateMachine.ChangeState(EnemyStateEnums.Moving);
         }

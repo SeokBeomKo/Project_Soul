@@ -17,13 +17,13 @@ namespace Tile
     {
         public Info infoNode = Info.Null;
         public bool isWalkable = true;
-        public Vector3Int Position { get; set; }
+        public Vector2Int Position { get; set; }
         public TileNode Parent { get; set; }
         public int G { get; set; }
         public int H { get; set; }
         public int F { get { return G + H; } }
 
-        public TileNode(Vector3Int position, TileNode parent, int g, int h)
+        public TileNode(Vector2Int position, TileNode parent, int g, int h)
         {
             Position = position;
             Parent = parent;

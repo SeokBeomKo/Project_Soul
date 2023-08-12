@@ -39,8 +39,9 @@ public abstract class PlayerType : MonoBehaviour, IPlayerType
             return;
         }
 
-        Vector3Int playerPosition = Vector3Int.FloorToInt(player.transform.parent.position);
-        Vector3Int clickedPosition = Vector3Int.FloorToInt(hit.collider.GetComponent<Transform>().parent.position);
+        //Vector3Int playerPosition = Vector3Int.FloorToInt(player.transform.parent.position);
+        Vector2 playerPosition = new Vector2(player.transform.parent.position.x,player.transform.parent.position.z);
+        Vector2 clickedPosition = new Vector2(hit.collider.GetComponent<Transform>().parent.position.x,hit.collider.GetComponent<Transform>().parent.position.z);
 
         // 타일 오브젝트를 감지했을 경우 처리
         if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Tile"))
@@ -55,35 +56,35 @@ public abstract class PlayerType : MonoBehaviour, IPlayerType
         }
     }
 
-    private void EnemyClick(Vector3Int playerPosition, Vector3Int clickedPosition)
+    private void EnemyClick(Vector2 playerPosition, Vector2 clickedPosition)
     {
         // 사거리 이내라면 공격
-        if (Vector3Int.Distance(playerPosition, clickedPosition) <= player.attackRange)
+        if (Vector2.Distance(playerPosition, clickedPosition) <= player.attackRange)
         {
             player.stateMachine.ChangeState(PlayerStateEnums.Attack);
             return;
         }
 
         // 사거리 밖이라면 이동
-        Vector3Int? targetTile = AStarAlgorithm.FindNearWalkableTile(playerPosition, clickedPosition, player.attackRange);
+        Vector2? targetTile = AStarAlgorithm.FindNearWalkableTile(playerPosition, clickedPosition, player.attackRange);
         if (!targetTile.HasValue)
         {
             return;
         }
 
-        player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, Vector3Int.FloorToInt(player.transform.parent.position), targetTile.Value);
+        player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, new Vector2(player.transform.parent.position.x,player.transform.parent.position.z), targetTile.Value);
         GameManager.Instance.InitPath();
         player.stateMachine.ChangeState(PlayerStateEnums.Moving);
     }
 
-    private void TileClick(Vector3Int playerPosition, Vector3Int clickedPosition)
+    private void TileClick(Vector2 playerPosition, Vector2 clickedPosition)
     {
         if (!GameManager.Instance.nodeMap[clickedPosition].isWalkable)
             {
                 return;
             }
         // 타일 정보 출력
-        Debug.Log($"Clicked Tile: Column Index: {clickedPosition.x}, Row Index: {clickedPosition.z}");
+        Debug.Log($"Clicked Tile: Column Index: {clickedPosition.x}, Row Index: {clickedPosition.y}");
         player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, playerPosition, clickedPosition);
         GameManager.Instance.InitPath();
         player.stateMachine.ChangeState(PlayerStateEnums.Moving);
@@ -98,7 +99,7 @@ public abstract class PlayerType : MonoBehaviour, IPlayerType
         {
             return;
         }
-        Vector3 targetPosition = new Vector3(player.pathTiles[currentPathIndex].x, 0, player.pathTiles[currentPathIndex].z);
+        Vector3 targetPosition = new Vector3(player.pathTiles[currentPathIndex].x, 0, player.pathTiles[currentPathIndex].y);
         if (Vector3.Distance(player.transform.parent.position, targetPosition) > Mathf.Epsilon)
         {
             player.transform.parent.LookAt(targetPosition);

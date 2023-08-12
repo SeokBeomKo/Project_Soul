@@ -24,11 +24,11 @@ public class PlayerIdleState : IPlayerState
     {
         Debug.Log("Player State : (Enter)Player Idle State");
         player.ChangeAnimation(PlayerStateEnums.Idle.ToString());
-        GameManager.Instance.SetWalkable(Vector3Int.FloorToInt(player.transform.parent.position), false);
+        GameManager.Instance.SetWalkable(Vector2Int.FloorToInt(new Vector2(player.transform.parent.position.x,player.transform.parent.position.z)), false);
     }
     public void OnStateExit()
     {
         Debug.Log("Player State : (Exit)Player Idle State");
-        GameManager.Instance.SetWalkable(Vector3Int.FloorToInt(player.transform.parent.position), true);
+        GameManager.Instance.SetWalkable(Vector2Int.FloorToInt(new Vector2(player.transform.parent.position.x,player.transform.parent.position.z)), true);
     }
 }

@@ -11,7 +11,7 @@ public class TileMap : MonoBehaviour
     {
         foreach(Transform transform in tileList)
         {
-            Vector3Int position = Vector3Int.FloorToInt(new Vector3(transform.position.x,0,transform.position.z));
+            Vector2Int position = Vector2Int.FloorToInt(new Vector2(transform.position.x,transform.position.z));
             GameManager.Instance.nodeMap[position] = new TileNode(position, null, int.MaxValue, int.MaxValue);
         }
     }
