@@ -39,7 +39,7 @@ public class PoolManager : Singleton<PoolManager>
         }
 
         // 새로운 Pool 객체를 생성합니다.
-        Pool newPool = new Pool {tag = tag, prefab = _prefab, size = _size};
+        Pool newPool = new Pool {tag = _tag, prefab = _prefab, size = _size};
         pools.Add(newPool);
 
         CreatePools(new List<Pool> { newPool });

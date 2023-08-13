@@ -10,7 +10,11 @@ public class TileMap : MonoBehaviour
     public static event OnMapLoadedHandler OnMapLoaded;
 
     [SerializeField]    public List<Transform> tileList;
-    [SerializeField]    public Dictionary<string, Vector2> enemySpwanData;
+    [SerializeField]    public Dictionary<string,Vector2[]> enemyList;
+
+
+    // you can now access directly the color list
+    //List<Color> colorList = m_colorStringListDict[key];
 
     private void OnEnable()
     {
