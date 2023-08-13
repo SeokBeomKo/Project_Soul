@@ -13,6 +13,9 @@ public class GameManager : Singleton<GameManager>
     // 씨네머신 카메라
     [SerializeField] public CinemachineBrain cinemachineBrain;
 
+    // 미니맵 카메라
+    [SerializeField] public Camera miniCam;
+
     // 스테이지 컨트롤러
     [SerializeField] public StageController stageController;
 

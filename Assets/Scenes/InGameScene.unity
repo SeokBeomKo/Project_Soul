@@ -2407,6 +2407,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376874918}
   m_Mesh: {fileID: 4300000, guid: 7e34e49bc5d563d4cbfdbe1879f9e449, type: 2}
+--- !u!1 &378551080 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4070091061598660194, guid: d53a19010b7367546a5045a11e2398fa, type: 3}
+  m_PrefabInstance: {fileID: 1918771392491482007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &383906901 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3900587532585606179, guid: 94218f392d1547643891aa8d1efc292c, type: 3}
@@ -5250,7 +5255,8 @@ MonoBehaviour:
   cinemachineBrain: {fileID: 1949174323}
   miniCam: {fileID: 0}
   stageController: {fileID: 1006784423}
-  entities: []
+  entities:
+  - {fileID: 378551080}
 --- !u!114 &1089141707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7910,7 +7916,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1907941842}
   - component: {fileID: 1907941841}
-  - component: {fileID: 1907941840}
   - component: {fileID: 1907941839}
   m_Layer: 0
   m_Name: MiniMap
@@ -7963,14 +7968,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &1907941840
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1907941838}
-  m_Enabled: 1
 --- !u!20 &1907941841
 Camera:
   m_ObjectHideFlags: 0
@@ -8505,7 +8502,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 462567577404892107, guid: d53a19010b7367546a5045a11e2398fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 462567577404892107, guid: d53a19010b7367546a5045a11e2398fa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8513,7 +8510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 462567577404892107, guid: d53a19010b7367546a5045a11e2398fa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 462567577404892107, guid: d53a19010b7367546a5045a11e2398fa, type: 3}
       propertyPath: m_LocalRotation.w

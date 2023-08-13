@@ -492,6 +492,16 @@ MonoBehaviour:
   - {fileID: 1429463542643858999}
   - {fileID: 4668676367790101636}
   - {fileID: 4095136983873777939}
+  exampleDictionary:
+    entries:
+    - Key: sss
+      Value:
+      - {x: 0, y: 0}
+      - {x: 0, y: 0}
+      - {x: 0, y: 0}
+      - {x: 0, y: 0}
+    - Key: 
+      Value: []
 --- !u!1 &2397911957376760137
 GameObject:
   m_ObjectHideFlags: 0

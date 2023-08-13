@@ -12,9 +12,8 @@ public class TileMap : MonoBehaviour
     [SerializeField]    public List<Transform> tileList;
     [SerializeField]    public Dictionary<string,Vector2[]> enemyList;
 
+    [SerializeField]    private StringListVector2Dictionary  exampleDictionary;
 
-    // you can now access directly the color list
-    //List<Color> colorList = m_colorStringListDict[key];
 
     private void OnEnable()
     {

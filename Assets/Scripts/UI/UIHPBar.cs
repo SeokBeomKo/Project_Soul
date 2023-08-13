@@ -11,6 +11,9 @@ public class UIHPBar : MonoBehaviour, IObserver
     [SerializeField]    public Image hpEffect;
     [SerializeField]    public bool isHit = false;
 
+    float lerpTime = 0.5f;      // 러프가 진행될 시간
+    float currentTime = 0f;
+
 
     public void Init(Entity _entity)
     {
@@ -23,6 +26,11 @@ public class UIHPBar : MonoBehaviour, IObserver
         {
             gameObject.SetActive(false);
         }
+
+        // if(currentTime >= lerpTime)
+        // {
+        //     currentTime = lerpTime;
+        // }
 
         if(isHit)
         {

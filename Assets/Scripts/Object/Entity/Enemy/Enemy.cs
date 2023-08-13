@@ -36,6 +36,7 @@ namespace EnemySystem
             }
 
             entityInfo.hpCur = entityInfo.hpMax;
+            stateMachine.ChangeState(EnemyStateEnums.Idle);
         }
 
         void OnDisable()
