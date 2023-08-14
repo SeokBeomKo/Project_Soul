@@ -109,6 +109,7 @@ public abstract class PlayerType : MonoBehaviour, IPlayerType
         else
         {
             player.transform.position = targetPosition;
+            player.tilePosition = new(player.transform.position.x, player.transform.position.z);
             UpdatePathIndex();
             player.playerArea.NotifyObservers();
         }

@@ -42,6 +42,22 @@ public class Player : Entity
         entityInfo.ignPower = 0;   // 관통력
     }
 
+    // 오브젝트 풀에서 가져올 시 초기화
+    void OnEnable() 
+    {
+        tilePosition = new(transform.position.x,transform.position.z);
+        if (GameManager.Instance.nodeMap[tilePosition] != null)
+            Debug.Log(tilePosition);
+    }
+    void OnDisable()
+    {
+        stateMachine.ChangeState(PlayerStateEnums.Idle);
+        if (GameManager.Instance.nodeMap.ContainsKey(new Vector2(transform.position.x,transform.position.z)))
+        {
+            GameManager.Instance.SetWalkable(new Vector2(transform.position.x,transform.position.z), true);
+        }
+    }
+
     public void ChangeAnimation(string newAnimation)
     {
         if(curAnimation == newAnimation)    return;
@@ -56,10 +72,6 @@ public class Player : Entity
         if (null != stateMachine.curState)
         {
             stateMachine.curState.Execute();
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Hit(10,0);
         }
     }
 

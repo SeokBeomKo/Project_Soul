@@ -31,6 +31,8 @@ namespace EnemySystem
         // 오브젝트 풀에서 가져올 시 초기화
         private void OnEnable() 
         {
+            stateMachine.ChangeState(EnemyStateEnums.Idle);
+            tilePosition = new(transform.position.x,transform.position.z);
             entityInfo.hpCur = entityInfo.hpMax;
         }
 
@@ -40,7 +42,6 @@ namespace EnemySystem
             {
                 GameManager.Instance.SetWalkable(new Vector2(transform.position.x,transform.position.z), true);
             }
-            stateMachine.ChangeState(EnemyStateEnums.Idle);
         }
 
         private void Enenmy_OnMapLoaded()
@@ -96,7 +97,7 @@ namespace EnemySystem
             if (enemyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f &&
                 enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
             {
-                transform.parent.gameObject.SetActive(false);
+                PoolManager.Instance.ReturnToPool(enemyData.enemyInfo.name,transform.parent.gameObject);
             }
         }
 

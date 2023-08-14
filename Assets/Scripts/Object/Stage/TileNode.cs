@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Tile
-{
-    public enum Info
+public enum TileType
     {
         Null,
 
@@ -13,9 +11,12 @@ namespace Tile
         Item,
         Portal
     }
+
+namespace Tile
+{
     public class TileNode : IComparable<TileNode>
     {
-        public Info infoNode = Info.Null;
+        public TileType infoNode = TileType.Null;
         
         public bool isWalkable = true;
         public Vector2 Position { get; set; }

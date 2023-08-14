@@ -8,7 +8,6 @@ namespace EnemySystem
     {
         public override void Idle()
         {
-            Debug.Log(entityInfo.hpCur);
         }
         int currentPathIndex = 0;  // 경로 인덱스
         public override void Moving()
@@ -25,7 +24,8 @@ namespace EnemySystem
             }
             else
             {
-                transform.position = targetPosition;
+                transform.parent.position = targetPosition;
+                tilePosition = new(transform.position.x,transform.position.z);
                 UpdatePathIndex();
             }
         }

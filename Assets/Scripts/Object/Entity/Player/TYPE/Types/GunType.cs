@@ -23,12 +23,14 @@ public class GunType : PlayerType
         {
             player.attackTarget = null;
             player.stateMachine.ChangeState(PlayerStateEnums.Idle);
+            return;
         }
+        player.transform.parent.LookAt(new Vector3(player.attackTarget.transform.position.x,0,player.attackTarget.transform.position.z));
     }
 
     public override void OnAttack()
     {
-        Instantiate(bullet, muzlle.position, player.transform.rotation);
+        PoolManager.Instance.SpawnFromPool("Bullet",muzlle.position, player.transform.rotation);
 
         player.attackTarget.attackTarget = player;
         player.attackTarget.Hit(player.entityInfo.attDamage,player.entityInfo.ignPower);

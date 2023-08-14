@@ -17,7 +17,7 @@ public class GunslingerBullet : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            gameObject.SetActive(false);
+            PoolManager.Instance.ReturnToPool("Bullet",gameObject);
         }
     }
 
@@ -29,6 +29,6 @@ public class GunslingerBullet : MonoBehaviour
     private IEnumerator DisableAfterSeconds()
     {
         yield return WaitForSecondsPool.GetWaitForSeconds(1f);
-        gameObject.SetActive(false);
+        PoolManager.Instance.ReturnToPool("Bullet",gameObject);
     }
 }

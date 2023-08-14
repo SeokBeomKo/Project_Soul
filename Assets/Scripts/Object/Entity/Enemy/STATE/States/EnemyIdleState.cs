@@ -21,11 +21,9 @@ namespace EnemySystem
         public void OnStateEnter()
         {
             enemy.ChangeAnimation(EnemyStateEnums.Idle.ToString());
-            GameManager.Instance.SetWalkable(Vector2Int.FloorToInt(new Vector2(enemy.transform.parent.position.x,enemy.transform.parent.position.z)), false);
         }
         public void OnStateExit()
         {
-            GameManager.Instance.SetWalkable(Vector2Int.FloorToInt(new Vector2(enemy.transform.parent.position.x,enemy.transform.parent.position.z)), true);
         }
     }
     

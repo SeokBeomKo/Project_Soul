@@ -17,7 +17,9 @@ public class GreateSwordType : PlayerType
             player.stateMachine.ChangeState(PlayerStateEnums.Idle);
 
             m_iAttackIndex = 0;
+            return;
         }
+        player.transform.parent.LookAt(new Vector3(player.attackTarget.transform.position.x,0,player.attackTarget.transform.position.z));
     }
     public int m_iAttackIndex = 0;
     public override void OnAttack()

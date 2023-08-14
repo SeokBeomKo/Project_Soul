@@ -7,9 +7,29 @@ abstract public class Entity : MonoBehaviour, IDamageable, ISubject
 {
     [HideInInspector]   public EntityInfo entityInfo;
 
-    [HideInInspector]   public Vector3Int curTilePosition;                  // 현재 타일 위치(키 값)
-    [HideInInspector]   public Vector3Int startPoint;                       // 길 찾기 시작점
-    [HideInInspector]   public Vector3Int endPoint;                         // 길 찾기 목표지점
+    private Vector2 _tilePosition;
+    [HideInInspector]   public Vector2 tilePosition
+    {
+        get { return _tilePosition; }
+        set
+        {
+            // 이전 위치의 노드를 가져와서 isWalkable을 true로 설정
+            if (GameManager.Instance.nodeMap.ContainsKey(_tilePosition))
+            {
+                GameManager.Instance.nodeMap[_tilePosition].isWalkable = true;
+            }
+
+            // 새로운 위치에 해당하는 노드의 isWalkable을 false로 설정
+            if (GameManager.Instance.nodeMap.ContainsKey(value))
+            {
+                GameManager.Instance.nodeMap[value].isWalkable = false;
+            }
+
+            // tilePosition 변수 업데이트
+            _tilePosition = value;
+        }
+    }
+
     [HideInInspector]   public List<Vector2> pathTiles;                     // 길 찾기 경로 정보
     
     public Vector3 moveTarget;                          // 객체의 이동 목표 지점

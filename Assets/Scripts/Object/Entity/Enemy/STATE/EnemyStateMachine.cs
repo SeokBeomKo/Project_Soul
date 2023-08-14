@@ -31,6 +31,7 @@ namespace EnemySystem
 
         public void ChangeState(EnemyStateEnums newStateType)
         {
+            if (null == stateDic)   return;
             if (null != curState)   curState.OnStateExit();
 
             if (stateDic.TryGetValue(newStateType, out IEnemyState newState))
