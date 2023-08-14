@@ -11,6 +11,9 @@ public class UIHPBar : MonoBehaviour, IObserver
     [SerializeField]    public Image hpEffect;
     [SerializeField]    public bool isHit = false;
 
+    float lerpTime = 0.5f;      // 러프가 진행될 시간
+    float currentTime = 0f;
+
 
     public void Init(Entity _entity)
     {
@@ -19,11 +22,21 @@ public class UIHPBar : MonoBehaviour, IObserver
     }
     void Update()
     {
-        hpBase.fillAmount = Mathf.Lerp(hpBase.fillAmount, entity.curHP / entity.maxHP, Time.deltaTime * 5f);
+        if (entity.entityInfo.hpCur == 0)
+        {
+            PoolManager.Instance.ReturnToPool("hpBar", gameObject);
+        }
+
+        transform.position = GameManager.Instance.GetActiveVirtualCamera().WorldToScreenPoint(entity.transform.parent.position + Vector3.up);
+
+        // if(currentTime >= lerpTime)
+        // {
+        //     currentTime = lerpTime;
+        // }
 
         if(isHit)
         {
-            hpEffect.fillAmount = Mathf.Lerp(hpEffect.fillAmount, entity.curHP / entity.maxHP, Time.deltaTime * 5f);
+            hpEffect.fillAmount = Mathf.Lerp(hpEffect.fillAmount, entity.entityInfo.hpCur / entity.entityInfo.hpMax, Time.deltaTime * 5f);
             if(hpEffect.fillAmount <= hpBase.fillAmount + 0.01f)
             {
                 hpEffect.fillAmount = hpBase.fillAmount;
@@ -34,19 +47,22 @@ public class UIHPBar : MonoBehaviour, IObserver
 
     public void Notify()
     {
-        Debug.Log("알람와썽");
+        hpBase.fillAmount = entity.entityInfo.hpCur / entity.entityInfo.hpMax;
         StartCoroutine(hpEffectUpdate());
     }
 
     public IEnumerator hpEffectUpdate()
     {
-        Debug.Log("코루틴");
         yield return WaitForSecondsPool.GetWaitForSeconds(0.5f);
         isHit = true;
     }
 
     void OnDisable()
     {
+        if (null == entity)
+        {
+            return;
+        }
         entity.RemoveObserver(this);
     }
 }

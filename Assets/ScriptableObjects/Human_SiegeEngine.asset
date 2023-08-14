@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1824c67a2535d2e48b30f3bea31f3b8f, type: 3}
+  m_Name: Human_SiegeEngine
+  m_EditorClassIdentifier: 
+  Type: 2
+  enemyInfo:
+    name: Human_SiegeEngine
+    moveSpeed: 0
+    hpMax: 100
+    hpCur: 0
+    attRange: 3
+    attSpeed: 1
+    attDamage: 10
+    defPower: 0
+    ignPower: 0
+  eliteInfo:
+    skillDelay: 0
+    skillDistance: 0
+    skillSpeed: 0
+  bossInfo:
+    skillDelay: 0
+    skillRange: 0
+    skillAttack: 0

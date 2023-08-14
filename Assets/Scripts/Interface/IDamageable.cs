@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    public IEnumerator Damaged(float _damage, float _ignore);
+    public void Hit(float _damage, float _ignore);
 }

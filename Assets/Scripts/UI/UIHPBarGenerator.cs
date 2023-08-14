@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using MagicaCloth2;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class UIHPBarGenerator : MonoBehaviour
 {
@@ -8,29 +10,41 @@ public class UIHPBarGenerator : MonoBehaviour
 
     [SerializeField]    List<Transform> m_objList = new List<Transform>();
     [SerializeField]    List<GameObject> m_hpBarList = new List<GameObject>();
+
+    [SerializeField]    Dictionary<int,GameObject> hpBarDictionary;
+
+    private void Awake()
+    {
+        hpBarDictionary = new Dictionary<int,GameObject>();
+    }
     
     void Start()
     {
-        List<GameObject> t_objList = new List<GameObject>();
-
-        t_objList.Add(GameManager.Instance.player.transform.parent.gameObject);
-        //t_objList.AddRange(GameManager.Instance.entities);
-
-        for(int i = 0; i < t_objList.Count; i++)
-        {
-            m_objList.Add(t_objList[i].transform);
-            GameObject t_hpbar = Instantiate(m_imgPrefab, t_objList[i].transform.position, Quaternion.identity, transform);
-            t_hpbar.GetComponent<UIHPBar>().Init(t_objList[i].GetComponentInChildren<Entity>());
-            m_hpBarList.Add(t_hpbar);
-        }
+        PoolManager.Instance.AddPool("hpBar", m_imgPrefab, 20, true);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable() 
     {
-        for(int i = 0; i < m_objList.Count; i++)
+        TileMap.OnUIHPBar += SetHPBar;
+    }
+
+    private void OnDisable() 
+    {
+        TileMap.OnUIHPBar -= SetHPBar;
+    }
+
+    void SetHPBar(GameObject obj)
+    {
+        GameObject t_hpBar = PoolManager.Instance.SpawnFromPool("hpBar", transform.position, Quaternion.identity);
+
+        if (null == t_hpBar)
         {
-            m_hpBarList[i].transform.position = GameManager.Instance.GetActiveVirtualCamera().WorldToScreenPoint(m_objList[i].position + Vector3.up);
+            return;
         }
+
+        UIHPBar uiHPBar = t_hpBar.GetComponent<UIHPBar>();
+        Entity entity = obj.GetComponentInChildren<Entity>();
+
+        uiHPBar.Init(entity);
     }
 }

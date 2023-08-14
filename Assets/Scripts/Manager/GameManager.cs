@@ -3,46 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using Tile;
+using UnityEngine.TextCore.Text;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] StringGameObjectDictionary playerDictionary;
     // 플레이어
-    [SerializeField] private Player Player;
-    public Player player { get => Player; } 
+    private Player _player;
+    [HideInInspector]   public Player player
+    {
+        get { return _player; }
+        set
+        {
+            _player = value;
+            Setting(_player.transform);
+        }
+    }
 
     // 씨네머신 카메라
     [SerializeField] public CinemachineBrain cinemachineBrain;
+    [SerializeField] public CinemachineVirtualCamera cam;
 
-    // 불러올 맵 정보
-    [SerializeField] public List<TileMap> tileMapList;
-    // 현재 맵
-    [SerializeField] public TileMap curTileMap;
+    // 미니맵 카메라
+    [SerializeField] public Camera miniCam;
 
-    // 타일 맵 정보
-    [SerializeField] public Dictionary<Vector3Int, TileNode> nodeMap;
-    [SerializeField] public List<GameObject> entities;
+    // 스테이지 컨트롤러
+    [SerializeField] public StageController stageController;
 
-    int rand;
+    // 현재 맵 정보
+    [SerializeField] public Dictionary<Vector2, TileNode> nodeMap;      // 현재 타일맵 경로
 
     private void Awake() 
     {
-        nodeMap = new Dictionary<Vector3Int, TileNode>();
-
-        InitStage();
+        destroyOnLoad = true;
+        nodeMap = new Dictionary<Vector2, TileNode>();
     }
 
-    public void InitStage()
+    void Start()
     {
-        rand = Random.Range(0, tileMapList.Count);
-        curTileMap = tileMapList[rand];
-        curTileMap.Init();
-        Instantiate(curTileMap);
-        tileMapList.RemoveAt(rand);
+        stageController.Init();
+
+        for(int i = 0; i < playerDictionary.Entries.Count; i++)
+        {
+            PoolManager.Instance.AddPool(playerDictionary.Entries[i].Key,playerDictionary.Entries[i].Value,1);
+        }
+        player = PoolManager.Instance.SpawnFromPool(playerDictionary.Entries[0].Key,Vector3.zero,Quaternion.identity).GetComponentInChildren<Player>();
     }
 
     public void InitPath()
     {
-        foreach (KeyValuePair<Vector3Int, TileNode> entry in nodeMap)
+        foreach (KeyValuePair<Vector2, TileNode> entry in nodeMap)
         {
             entry.Value.G = int.MaxValue;
             entry.Value.H = int.MaxValue;
@@ -50,7 +60,20 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void SetWalkable(Vector3Int _pos, bool _isWalkable)
+    public void Setting(Transform _target)
+    {
+        StartCoroutine(CamSetting(_target));
+    }
+
+    IEnumerator CamSetting(Transform _target)
+    {
+        while (cinemachineBrain == null)
+        {
+            yield return null;
+        }
+        cam.Follow = _target;
+    }
+    public void SetWalkable(Vector2 _pos, bool _isWalkable)
     {
         nodeMap[_pos].isWalkable = _isWalkable;
     }
@@ -59,5 +82,4 @@ public class GameManager : Singleton<GameManager>
     {  
         return cinemachineBrain.OutputCamera;
     }
-
 }

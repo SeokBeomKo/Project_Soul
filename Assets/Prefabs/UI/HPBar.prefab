@@ -113,7 +113,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 15, y: 10}
+  m_SizeDelta: {x: 25, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4255924088474745066
 CanvasRenderer:
@@ -168,8 +168,7 @@ MonoBehaviour:
   entity: {fileID: 0}
   hpBase: {fileID: 2641987686076033809}
   hpEffect: {fileID: 7457439123506446730}
-  maxHP: 10
-  curHP: 10
+  isHit: 0
 --- !u!1 &5191700032555820617
 GameObject:
   m_ObjectHideFlags: 0

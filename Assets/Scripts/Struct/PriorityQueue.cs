@@ -62,7 +62,7 @@ namespace DataStruct
             get { return elements.Count; }
         }
 
-        public bool Contains(Vector3Int position)
+        public bool Contains(Vector2 position)
         {
             return elements.Any(e => (e as TileNode).Position.Equals(position));
         }
