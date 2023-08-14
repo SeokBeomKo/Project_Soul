@@ -24,8 +24,10 @@ public class UIHPBar : MonoBehaviour, IObserver
     {
         if (entity.entityInfo.hpCur == 0)
         {
-            gameObject.SetActive(false);
+            PoolManager.Instance.ReturnToPool("hpBar", gameObject);
         }
+
+        transform.position = GameManager.Instance.GetActiveVirtualCamera().WorldToScreenPoint(entity.transform.parent.position + Vector3.up);
 
         // if(currentTime >= lerpTime)
         // {
@@ -57,6 +59,10 @@ public class UIHPBar : MonoBehaviour, IObserver
 
     void OnDisable()
     {
+        if (null == entity)
+        {
+            return;
+        }
         entity.RemoveObserver(this);
     }
 }

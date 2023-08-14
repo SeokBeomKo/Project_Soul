@@ -494,14 +494,17 @@ MonoBehaviour:
   - {fileID: 4095136983873777939}
   exampleDictionary:
     entries:
-    - Key: sss
+    - Key: Zombie_Melee
       Value:
-      - {x: 0, y: 0}
-      - {x: 0, y: 0}
-      - {x: 0, y: 0}
-      - {x: 0, y: 0}
-    - Key: 
-      Value: []
+      - {x: 1, y: 1}
+      - {x: 5, y: 2}
+      - {x: 10, y: -1}
+      - {x: 0, y: 10}
+    - Key: Zombie_Range
+      Value:
+      - {x: 7, y: 9}
+      - {x: -3, y: -4}
+      - {x: 0, y: 8}
 --- !u!1 &2397911957376760137
 GameObject:
   m_ObjectHideFlags: 0

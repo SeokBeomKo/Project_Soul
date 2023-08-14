@@ -11,17 +11,20 @@ public class PoolManager : Singleton<PoolManager>
         public string tag;          // 각 풀에 대한 고유 태그
         public GameObject prefab;   // 풀링할 게임 오브젝트 prefab
         public int size;            // 풀에 저장할 게임 오브젝트 수
+
+        public bool isUI;           // UI 라면 캔버스 풀에 생성
     }
     
     [SerializeField] private List<Pool> pools;                      // 풀 목록
     private Dictionary<string, Queue<GameObject>> poolDictionary;   // 풀을 저장하기 위한 딕셔너리
 
     [SerializeField]  private GameObject  objPool;
+    [SerializeField]  private GameObject  objPool_UI;
 
     void Awake()
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
-        CreatePools(pools);
+        //CreatePools(pools);
     }
 
     /// <summary>
@@ -30,7 +33,8 @@ public class PoolManager : Singleton<PoolManager>
     /// <param name="_tag">게임 오브젝트를 구분하는 태그입니다.</param>
     /// <param name="_prefab">생성할 게임 오브젝트의 프리팹입니다.</param>
     /// <param name="_size">풀에 저장할 게임 오브젝트의 수입니다.</param>
-    public void AddPool(string _tag, GameObject _prefab, int _size)
+    /// <param name="_isUI">UI 인지 아닌지 판별하는 변수입니다.</param>
+    public void AddPool(string _tag, GameObject _prefab, int _size, bool _isUI = false)
     {
         if (poolDictionary.ContainsKey(tag))
         {
@@ -39,7 +43,7 @@ public class PoolManager : Singleton<PoolManager>
         }
 
         // 새로운 Pool 객체를 생성합니다.
-        Pool newPool = new Pool {tag = _tag, prefab = _prefab, size = _size};
+        Pool newPool = new Pool {tag = _tag, prefab = _prefab, size = _size, isUI = _isUI};
         pools.Add(newPool);
 
         CreatePools(new List<Pool> { newPool });
@@ -52,9 +56,17 @@ public class PoolManager : Singleton<PoolManager>
         {
             return;
         }
-        
         GameObject poolParent = new GameObject(poolList[0].tag);
-        poolParent.transform.SetParent(objPool.transform);
+
+        if(poolList[0].isUI)
+        {
+            poolParent.transform.SetParent(objPool_UI.transform, false);
+        }
+        else
+        {
+            poolParent.transform.SetParent(objPool.transform);
+        }
+        
         foreach (Pool pool in poolList)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
@@ -64,7 +76,7 @@ public class PoolManager : Singleton<PoolManager>
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
-                obj.transform.SetParent(poolParent.transform);  //부모 오브젝트가 될 풀의 자식으로 설정합니다.
+                obj.transform.SetParent(poolParent.transform, false);  //부모 오브젝트가 될 풀의 자식으로 설정합니다.
                 obj.name = pool.tag; // 이름으로 태그 사용
                 objectPool.Enqueue(obj);
             }

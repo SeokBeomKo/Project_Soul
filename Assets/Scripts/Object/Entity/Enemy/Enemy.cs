@@ -32,19 +32,19 @@ namespace EnemySystem
         {
             if (GameManager.Instance.nodeMap.ContainsKey(new Vector2(transform.position.x,transform.position.z)))
             {
-                GameManager.Instance.SetWalkable(new Vector2(transform.position.x,transform.position.y), false);
+                GameManager.Instance.SetWalkable(new Vector2(transform.position.x,transform.position.z), false);
             }
 
             entityInfo.hpCur = entityInfo.hpMax;
-            stateMachine.ChangeState(EnemyStateEnums.Idle);
         }
 
         void OnDisable()
         {
             if (GameManager.Instance.nodeMap.ContainsKey(new Vector2(transform.position.x,transform.position.z)))
             {
-                GameManager.Instance.SetWalkable(new Vector2(transform.position.x,transform.position.y), true);
+                GameManager.Instance.SetWalkable(new Vector2(transform.position.x,transform.position.z), true);
             }
+            stateMachine.ChangeState(EnemyStateEnums.Idle);
         }
 
         private void Enenmy_OnMapLoaded()
