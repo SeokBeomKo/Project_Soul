@@ -1110,6 +1110,7 @@ MonoBehaviour:
     - Key: Gunslinger
       Value: {fileID: 4413931911886318886, guid: 59b437cc1ac23a54fac9e7333cf7ec53, type: 3}
   cinemachineBrain: {fileID: 1949174323}
+  cam: {fileID: 1690791211}
   miniCam: {fileID: 0}
   stageController: {fileID: 1006784423}
 --- !u!114 &1089141707
