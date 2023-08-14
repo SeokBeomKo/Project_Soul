@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
 
     // 씨네머신 카메라
     [SerializeField] public CinemachineBrain cinemachineBrain;
+    [SerializeField] public CinemachineVirtualCamera cam;
 
     // 미니맵 카메라
     [SerializeField] public Camera miniCam;
@@ -34,13 +35,14 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake() 
     {
+        destroyOnLoad = true;
         nodeMap = new Dictionary<Vector2, TileNode>();
     }
 
     void Start()
     {
         stageController.Init();
-        
+
         for(int i = 0; i < playerDictionary.Entries.Count; i++)
         {
             PoolManager.Instance.AddPool(playerDictionary.Entries[i].Key,playerDictionary.Entries[i].Value,1);
@@ -60,9 +62,17 @@ public class GameManager : Singleton<GameManager>
 
     public void Setting(Transform _target)
     {
-        cinemachineBrain.ActiveVirtualCamera.Follow = _target;
+        StartCoroutine(CamSetting(_target));
     }
 
+    IEnumerator CamSetting(Transform _target)
+    {
+        while (cinemachineBrain == null)
+        {
+            yield return null;
+        }
+        cam.Follow = _target;
+    }
     public void SetWalkable(Vector2 _pos, bool _isWalkable)
     {
         nodeMap[_pos].isWalkable = _isWalkable;

@@ -28,7 +28,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         _instance = singleton.AddComponent<T>();
                         singleton.name = "(singleton) " + typeof(T).ToString();
 
-                        // 변경된 부분
                         if (!Singleton<T>.destroyOnLoad)
                         {
                             DontDestroyOnLoad(singleton);
@@ -41,7 +40,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    // 신규 추가된 부분
     protected virtual void OnDestroy()
     {
         if (Instance != null && Equals(Instance, this))

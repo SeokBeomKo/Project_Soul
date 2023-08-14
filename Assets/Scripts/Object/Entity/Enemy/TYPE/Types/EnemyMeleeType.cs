@@ -43,7 +43,7 @@ namespace EnemySystem
             }
         }
 
-        public override void Battle()
+        public override void Watch()
         {
             // 사거리 이내라면 공격
             if (Vector3.Distance(attackTarget.transform.position, transform.parent.position) <= entityInfo.attRange)
@@ -75,27 +75,32 @@ namespace EnemySystem
 
         public override void OnAttack()
         {
-            if(null == attVFX)
-            {
-                return;
-            }
-
-            attVFX.SetActive(true);
-        }
-
-        public override void OffAttack()
-        {
-            if(null == attVFX)
-            {
-                return;
-            }
-
-            attVFX.SetActive(false);
+            attackTarget.GetComponent<Entity>().Hit(entityInfo.attDamage,entityInfo.ignPower);
         }
 
         public override void Skill()
         {
 
+        }
+
+        public override void OnBattle()
+        {
+            if(null == attTrail)
+            {
+                return;
+            }
+
+            attTrail.SetActive(true);
+        }
+
+        public override void OffBattle()
+        {
+            if(null == attTrail)
+            {
+                return;
+            }
+
+            attTrail.SetActive(false);
         }
     }
 

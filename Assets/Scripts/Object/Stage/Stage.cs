@@ -7,8 +7,8 @@ public class Stage : MonoBehaviour
 {
     // 스테이지의 전체 타일맵 정보
     [SerializeField] public List<TileMap> tilemapList;
-    // 해당 스테이지에 필요한 몹 정보
-    [SerializeField] public List<GameObject> enemyList;
+    // 해당 스테이지에 미리 풀링해야하는 오브젝트 정보
+    [SerializeField] public List<GameObject> poolList;
 
     private List<int> mapIndex;
     private int excludeIndex;
@@ -36,9 +36,9 @@ public class Stage : MonoBehaviour
 
     public void PoolEnemy()
     {
-        for(int i = 0; i < enemyList.Count; i++)
+        for(int i = 0; i < poolList.Count; i++)
         {
-            PoolManager.Instance.AddPool(enemyList[i].name, enemyList[i], 10);
+            PoolManager.Instance.AddPool(poolList[i].name, poolList[i], 10);
         }
     }
 

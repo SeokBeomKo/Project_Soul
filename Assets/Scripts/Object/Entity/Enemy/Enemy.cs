@@ -14,9 +14,10 @@ namespace EnemySystem
 
         [SerializeField]    public HitEffectController  hitEffectController;
 
-        [SerializeField]    public GameObject           attVFX;
-
-
+        [SerializeField]    public GameObject           attTrail;
+        [SerializeField]    public ParticleSystem       attParticle;
+        [SerializeField]    public Transform            attProjectilePos;
+        
         private void Awake()
         {
             moveTarget = transform.parent.position;
@@ -74,10 +75,11 @@ namespace EnemySystem
 
         public abstract void Idle();
         public abstract void Moving();
-        public abstract void Battle();
+        public abstract void Watch();
         public abstract void Attack();
         public abstract void OnAttack();
-        public abstract void OffAttack();
+        public abstract void OnBattle();
+        public abstract void OffBattle();
         public abstract void Skill();
         public void InRange()
         {
@@ -114,7 +116,7 @@ namespace EnemySystem
             stateMachine.stateDic.TryGetValue(EnemyStateEnums.Idle, out IEnemyState newState);
             if (newState == stateMachine.curState)
             {
-                stateMachine.ChangeState(EnemyStateEnums.Battle);
+                stateMachine.ChangeState(EnemyStateEnums.Watch);
             }
 
             entityInfo.hpCur -= m_ftDamage;

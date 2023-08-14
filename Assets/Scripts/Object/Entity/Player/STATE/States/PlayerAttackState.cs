@@ -18,11 +18,9 @@ public class PlayerAttackState : IPlayerState
 
     public void OnStateEnter()
     {
-        Debug.Log("Player State : (Enter)Player Attack State");
         player.ChangeAnimation(PlayerStateEnums.Attack.ToString());
     }
     public void OnStateExit()
     {
-        Debug.Log("Player State : (Exit)Player Attack State");
     }
 }

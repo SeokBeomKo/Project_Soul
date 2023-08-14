@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemySystem
 {
-    public class EnemyBattleState : IEnemyState
+    public class EnemyWatchState : IEnemyState
     {
         public Enemy enemy {get; set;}
         public EnemyStateMachine stateMachine {get; set;}
@@ -15,7 +15,7 @@ namespace EnemySystem
         }
         public void Execute()
         {
-            enemy.Battle();
+            enemy.Watch();
         }
         public void OnStateEnter()
         {

@@ -26,6 +26,9 @@ public class PlayerArea : MonoBehaviour, ISubject
 
     private void OnTriggerEnter(Collider other) 
     {
+        if (!other.CompareTag("Enemy"))
+            return;
+
         IObserver enemyObserver = other.GetComponent<IObserver>();
         if (enemyObserver != null)
         {
@@ -36,12 +39,11 @@ public class PlayerArea : MonoBehaviour, ISubject
     private void OnTriggerExit(Collider other) 
     {
         if (other.CompareTag("Enemy"))
+            return;
+        IObserver enemyObserver = other.GetComponent<IObserver>();
+        if (enemyObserver != null)
         {
-            IObserver enemyObserver = other.GetComponent<IObserver>();
-            if (enemyObserver != null)
-            {
-                RemoveObserver(enemyObserver);
-            }
+            RemoveObserver(enemyObserver);
         }
     }
 }

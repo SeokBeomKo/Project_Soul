@@ -6,6 +6,7 @@ namespace EnemySystem
 {
     public class EnemyRangeType : Enemy
     {
+        public string projectileName;
         public override void Idle()
         {
             
@@ -26,6 +27,7 @@ namespace EnemySystem
             else
             {
                 transform.position = targetPosition;
+                tilePosition = new(transform.position.x,transform.position.z);
                 UpdatePathIndex();
             }
         }
@@ -43,7 +45,7 @@ namespace EnemySystem
             }
         }
 
-        public override void Battle()
+        public override void Watch()
         {
             // 사거리 이내라면 공격
             if (Vector3.Distance(attackTarget.transform.position, transform.parent.position) <= entityInfo.attRange)
@@ -75,27 +77,22 @@ namespace EnemySystem
 
         public override void OnAttack()
         {
-            if(null == attVFX)
-            {
-                return;
-            }
-
-            attVFX.SetActive(true);
-        }
-
-        public override void OffAttack()
-        {
-            if(null == attVFX)
-            {
-                return;
-            }
-
-            attVFX.SetActive(false);
+            attackTarget.GetComponent<Entity>().Hit(entityInfo.attDamage,entityInfo.ignPower);
+            attParticle.Play();
+            PoolManager.Instance.SpawnFromPool(projectileName,attProjectilePos.position,transform.rotation);
         }
 
         public override void Skill()
         {
 
+        }
+
+        public override void OnBattle()
+        {
+        }
+
+        public override void OffBattle()
+        {
         }
     }
 

@@ -85,7 +85,7 @@ public abstract class PlayerType : MonoBehaviour, IPlayerType
                 return;
             }
         // 타일 정보 출력
-        Debug.Log($"Clicked Tile: Column Index: {clickedPosition.x}, Row Index: {clickedPosition.y}");
+        // Debug.Log($"Clicked Tile: Column Index: {clickedPosition.x}, Row Index: {clickedPosition.y}");
         player.pathTiles = AStarAlgorithm.FindPath(GameManager.Instance.nodeMap, playerPosition, clickedPosition);
         GameManager.Instance.InitPath();
         player.stateMachine.ChangeState(PlayerStateEnums.Moving);

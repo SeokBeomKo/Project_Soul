@@ -15,7 +15,7 @@ namespace EnemySystem
 
         }
 
-        public override void Battle()
+        public override void Watch()
         {
             
         }
@@ -31,12 +31,17 @@ namespace EnemySystem
         {
         }
 
-        public override void OffAttack()
-        {
-        }
         public override void Skill()
         {
 
+        }
+
+        public override void OnBattle()
+        {
+        }
+
+        public override void OffBattle()
+        {
         }
     }
 }
