@@ -19,7 +19,10 @@ namespace EnemySystem
 
     public enum EnemyTypeEnums
     {
-        NORMAL,
+        MELEE,
+        RANGE,
+        TURRET,
+
         ELITE,
 
         BOSS,

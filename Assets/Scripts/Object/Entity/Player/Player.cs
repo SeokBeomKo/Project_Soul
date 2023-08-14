@@ -28,7 +28,7 @@ public class Player : Entity
         entityInfo.moveSpeed = 2f;  // 이동 속도
     
         entityInfo.hpMax = 100;      // 최대 체력
-        entityInfo.attRange = 1;   // 공격 사거리
+        entityInfo.attRange = 4;   // 공격 사거리
         entityInfo.attSpeed = 1;   // 공격 속도
     }
 

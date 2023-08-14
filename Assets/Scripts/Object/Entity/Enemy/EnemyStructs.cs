@@ -5,6 +5,18 @@ using UnityEngine;
 
 namespace EnemySystem
 {
+    [Serializable] public struct MeleeInfo
+    {
+
+    }
+    [Serializable] public struct RangeInfo
+    {
+        
+    }
+    [Serializable] public struct TurretInfo
+    {
+        
+    }
     [Serializable] public struct EliteInfo
     {
         public float skillDelay;        // 스킬 대기시간

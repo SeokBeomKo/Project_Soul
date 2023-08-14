@@ -14,7 +14,7 @@ public class GunType : PlayerType
 
     private void OnEnable() 
     {
-        player.entityInfo.attRange = 2;
+        // player.entityInfo.attRange = 2;
     }
 
     public override void Attack()

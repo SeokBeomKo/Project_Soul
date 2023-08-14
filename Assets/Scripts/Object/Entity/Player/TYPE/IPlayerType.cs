@@ -20,6 +20,7 @@ public abstract class PlayerType : MonoBehaviour, IPlayerType
 {
     [SerializeField] public Player player{get; set;}
 
+
     public abstract void Attack();
     public abstract void Skill();
 

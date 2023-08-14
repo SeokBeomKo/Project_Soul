@@ -25,16 +25,12 @@ namespace EnemySystem
 
         private void Start() 
         {
+            entityInfo.hpCur = entityInfo.hpMax;
         }
 
         // 오브젝트 풀에서 가져올 시 초기화
         private void OnEnable() 
         {
-            if (GameManager.Instance.nodeMap.ContainsKey(new Vector2(transform.position.x,transform.position.z)))
-            {
-                GameManager.Instance.SetWalkable(new Vector2(transform.position.x,transform.position.z), false);
-            }
-
             entityInfo.hpCur = entityInfo.hpMax;
         }
 

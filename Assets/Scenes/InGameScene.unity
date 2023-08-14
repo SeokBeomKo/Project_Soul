@@ -2510,6 +2510,10 @@ PrefabInstance:
       value: Male_Base
       objectReference: {fileID: 0}
     - target: {fileID: 1630794972795428178, guid: 437683f7faaff9244a293f004cabb863, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: 437683f7faaff9244a293f004cabb863, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 15987076c0ebc3d48b0c7d1519aa72c3, type: 2}
@@ -5357,7 +5361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1315534498
 Transform:
   m_ObjectHideFlags: 0
@@ -5490,8 +5494,9 @@ MonoBehaviour:
   tilemapList:
   - {fileID: 1735529652821343517, guid: 0f07f59e858aa8e46b26b1ec14212154, type: 3}
   enemyList:
-  - {fileID: 4070091061598660194, guid: d53a19010b7367546a5045a11e2398fa, type: 3}
-  - {fileID: 9097888358120462095, guid: 59d822640af0b1645ad7bd368bd786b4, type: 3}
+  - {fileID: 8780375713456758058, guid: 5bcb1bce1b6163b4d8b4af7a1d0c25e8, type: 3}
+  - {fileID: 4384134554748249569, guid: bb8111cfd5c30464eb32b0c80a389e7f, type: 3}
+  - {fileID: 4787675544856935573, guid: b44b203e126630f4c8bc92438e63e7d7, type: 3}
 --- !u!4 &1383914994
 Transform:
   m_ObjectHideFlags: 0
@@ -5579,7 +5584,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f9fdc247381a3fd4d8ccc7de410f528e, type: 3}
   m_Color: {r: 0.49711853, g: 1, b: 0.2971698, a: 1}
   m_FlipX: 0

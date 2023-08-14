@@ -15,9 +15,11 @@ public class GreateSwordType : PlayerType
         {
             player.attackTarget = null;
             player.stateMachine.ChangeState(PlayerStateEnums.Idle);
+
+            m_iAttackIndex = 0;
         }
     }
-    int m_iAttackIndex = 0;
+    public int m_iAttackIndex = 0;
     public override void OnAttack()
     {
         //player.playerVFX.attack[m_iAttackIndex].transform.parent.position = transform.position;
@@ -26,6 +28,7 @@ public class GreateSwordType : PlayerType
         m_iAttackIndex = (m_iAttackIndex + 1) % player.playerVFX.attack.Count;
 
         player.attackTarget.GetComponent<Entity>().Hit(player.entityInfo.attDamage,player.entityInfo.ignPower);
+        player.attackTarget.GetComponent<Entity>().attackTarget = player;
     }
 
     public override void Skill()
