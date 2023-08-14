@@ -1514,7 +1514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5470601352750399769, guid: f64fc4772c4d4564f98174d0084b544d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5497328520207758016, guid: f64fc4772c4d4564f98174d0084b544d, type: 3}
       propertyPath: soul
@@ -2248,6 +2248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fb26b129c40734f80a68d39f8c4a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_iAttackIndex: 0
 --- !u!1001 &337891690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5290,7 +5291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a6a33ce29eb28489045434783b8a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 336321438}
+  Player: {fileID: 1020955957}
   cinemachineBrain: {fileID: 1949174323}
   miniCam: {fileID: 0}
   stageController: {fileID: 1006784423}
@@ -6630,7 +6631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5470601352750399769, guid: f64fc4772c4d4564f98174d0084b544d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5497328520207758016, guid: f64fc4772c4d4564f98174d0084b544d, type: 3}
       propertyPath: soul
@@ -7550,7 +7551,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1880899449}
+  m_Follow: {fileID: 47690141}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 2
